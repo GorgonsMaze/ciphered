@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ciphered Messages</title>
+    <link href="css/bulma.css" type="text/css" rel="stylesheet" >
+    <link href="css/style.css" type="text/css" rel="stylesheet" >
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono" rel="stylesheet">
+</head>
+<body>
+<!-- Begin Navigation -->
+<nav class="nav has-shadow">
+    <div class="nav-left">
+        <a class="nav-item ciphered-name" href="#">
+            <span><i class="fa fa-key" aria-hidden="true"></i></span>
+            <span>Ciphered</span>
+        </a>
+    </div>
+    <!-- Hamburger -->
+    <span class="nav-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </span>
+    <div class="nav-right nav-menu">
+
+        <a class="nav-item nali leve-item" href="#">
+            Home
+        </a>
+        <a class="nav-item nali" href="#">
+            Ciphers
+        </a>
+        <a class="nav-item nali" href="#">
+            About
+        </a>
+        <a class="nav-item nali" href="#">
+            Documentation
+        </a>
+        <span class="nav-item">
+
+        <a class="button nav-encrypt-btn" href="#">
+            <span>Encrypt</span>
+        </a>
+        </span>
+    </div>
+</nav>
+<!-- End Navigation -->
+
+<!-- Hero -->
+<section class="hero is-info is-bold">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                ÇÏphÈrèÐ
+            </h1>
+            <h2 class="subtitle">
+                Send hidden messages
+            </h2>
+        </div>
+    </div>
+</section>
+<!-- End Hero-->
+
+<div class="columns">
+    <div class="column is-8 is-offset-2">
+        <div class="notification is-danger">
+            <button class="delete"></button>
+            Notice! Danger lorem ipsum dolor sit amet, consectetur
+            adipiscing elit lorem ipsum dolor sit amet,
+            consectetur adipiscing elit
+        </div>
+    </div>
+</div>
+
+
+<!-- Begin Content -->
+<div class="columns">
+    <div class="column is-half is-offset-one-quarter">
+        <label class="label">Ciphers</label>
+        <p class="control">
+  <span class="select">
+    <select>
+        <option>Select dropdown</option>
+        <option>Caesar Cipher</option>
+        <option>Substitution Cipher</option>
+    </select>
+  </span>
+        </p>
+        <label class="label">Enter Message</label>
+        <p class="control">
+            <textarea class="textarea" placeholder="Textarea"></textarea>
+        </p>
+        <p class="control is-loading">
+            <textarea class="textarea" placeholder="Loading textarea"></textarea>
+        </p>
+        <p class="control">
+            <button class="button is-primary"><i class="fa fa-lock" aria-hidden="true"></i>
+                Encrypt
+            </button>
+            <button class="button is-info is-outlined"><i class="fa fa-unlock-alt" aria-hidden="true"></i>
+                Decrypt
+            </button>
+            <button class="button is-link">Cancel</button>
+        </p>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="content has-text-centered">
+            <p>
+                <strong>Ciphered</strong> by <a href="http://ianarsenault.me/">Ian Arsenault</a>. Find the source code
+                at <a href="https://github.com/GorgonsMaze/ciphered">Github</a>
+            </p>
+        </div>
+    </div>
+</footer>
+<!-- End Footer -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
