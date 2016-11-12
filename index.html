@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Ciphered Messages</title>
-    <link href="css/bulma.css" type="text/css" rel="stylesheet" >
-    <link href="css/style.css" type="text/css" rel="stylesheet" >
+    <link href="css/bulma.css" type="text/css" rel="stylesheet">
+    <link href="css/style.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono" rel="stylesheet">
 </head>
@@ -24,21 +25,19 @@
     <span></span>
   </span>
     <div class="nav-right nav-menu">
-
         <a class="nav-item nali leve-item" href="#">
             Home
         </a>
         <a class="nav-item nali" href="#">
             Ciphers
         </a>
-        <a class="nav-item nali" href="#">
+        <a class="nav-item nali" id="about">
             About
         </a>
         <a class="nav-item nali" href="#">
             Documentation
         </a>
         <span class="nav-item">
-
         <a class="button nav-encrypt-btn" href="#">
             <span>Encrypt</span>
         </a>
@@ -54,46 +53,116 @@
             <h1 class="title">
                 ÇÏphÈrèÐ
             </h1>
-            <h2 class="subtitle">
-                Send hidden messages
+            <h2 class="subtitle" id="typed">
+                <span id="texttype"></span><span id='cursor'>|</span>
             </h2>
         </div>
     </div>
 </section>
 <!-- End Hero-->
 
+<div class="container">
+    <section class="section">
+        <div class="container">
+            <div class="heading">
+                <h1 class="title">Substitution Cipher</h1>
+                <!--<div class="columns">-->
+                <!--<div class="column is-half">-->
+                <!--<h2 class="">-->
+                <!--A simple container to divide your page into <strong>sections</strong>, like the one you're currently reading-->
+                <!--</h2>-->
+                <!--</div>-->
+                <!--<div class="column is-half">-->
+                <!--<figure class="image subimg">-->
+                <!--<img src="http://www.stealthcopter.com/blog/wp-content/uploads/2009/12/320px-Substitution.png">-->
+                <!--</figure>-->
+                <!--</div>-->
+                <!--</div>-->
+                <h2 class="">
+                    A Substitution cipher is a method of encoding [substituting] every plaintext character into a
+                    ciphertext character
+                </h2>
+            </div>
+        </div>
+    </section>
+</div>
+
 <div class="columns">
     <div class="column is-8 is-offset-2">
-        <div class="notification is-danger">
-            <button class="delete"></button>
-            Notice! Danger lorem ipsum dolor sit amet, consectetur
-            adipiscing elit lorem ipsum dolor sit amet,
-            consectetur adipiscing elit
+        <div class="notification is-danger has-text-centered" id="notify">
+            <button class="delete del-warn"></button>
+            Notice! Do not use this as a means for encrypting personal or important data.
         </div>
     </div>
 </div>
 
 
+<div class="modal" id="aboutModal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title">About This Site</p>
+            <button class="delete mod-close"></button>
+        </header>
+        <section class="modal-card-body">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae dui ac nulla lobortis iaculis.
+            Integer commodo interdum nibh, volutpat vehicula risus mattis malesuada. Pellentesque et leo ac lorem
+            efficitur laoreet. Etiam in est tellus. Pellentesque nulla tortor, lacinia non ligula vitae, ornare
+            hendrerit magna. In egestas cursus enim ac porta. Sed fringilla nisl vitae dui auctor, a volutpat magna
+            imperdiet.
+
+
+        </section>
+        <footer class="modal-card-foot">
+        </footer>
+    </div>
+</div>
+
 <!-- Begin Content -->
 <div class="columns">
     <div class="column is-half is-offset-one-quarter">
-        <label class="label">Ciphers</label>
-        <p class="control">
+        <div class="columns">
+
+            <div class="column is-half">
+                <label class="label">Ciphers</label>
+                <p class="control">
   <span class="select">
-    <select>
-        <option>Select dropdown</option>
-        <option>Caesar Cipher</option>
-        <option>Substitution Cipher</option>
+    <select class="ciphselect" id="cipherSelect">
+        <option value="none">Select dropdown</option>
+        <option value="caesar">Caesar Cipher</option>
+        <option value="substitution">Substitution Cipher</option>
     </select>
   </span>
-        </p>
+                </p>
+            </div>
+            <div class="column is-half">
+                <label class="label">Substitution Cipher</label>
+                <p class="control">
+  <span class="select">
+    <select class="subselect" id="subSelect">
+        <option value="none">Choose subtitution</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+    </select>
+  </span>
+            </div>
+        </div>
         <label class="label">Enter Message</label>
         <p class="control">
-            <textarea class="textarea" placeholder="Textarea"></textarea>
+            <textarea class="textarea" placeholder="Type your message here"></textarea>
         </p>
-        <p class="control is-loading">
-            <textarea class="textarea" placeholder="Loading textarea"></textarea>
-        </p>
+
         <p class="control">
             <button class="button is-primary"><i class="fa fa-lock" aria-hidden="true"></i>
                 Encrypt
@@ -103,9 +172,39 @@
             </button>
             <button class="button is-link">Cancel</button>
         </p>
+        <p class="control is-loading">
+            <textarea class="textarea" placeholder="Encrypting message..."></textarea>
+        </p>
     </div>
 </div>
 
+
+<section class="section">
+    <div class="container">
+        <article class="message">
+            <div class="message-header">
+                Subtitution Key:
+            </div>
+            <div class="message-body">
+                <h2 class="title is-3">
+                    A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+                </h2>
+            </div>
+        </article>
+
+
+        <article class="message is-info">
+            <div class="message-body">
+                <h2 class="title is-3">
+                    A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+                </h2>
+            </div>
+            <div class="message-header">
+                Ciphertext
+            </div>
+        </article>
+    </div>
+</section>
 
 <!-- Footer -->
 <footer class="footer">
@@ -121,6 +220,7 @@
 <!-- End Footer -->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="js/script.js"></script>
 </body>
 </html>
