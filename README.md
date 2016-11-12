@@ -1,5 +1,6 @@
 # ciphered
 UI for input = plaintext / output = cipher
+![Image](http://i.imgur.com/0bealZ2.png)
 
 ## TODO:
 * Home/About/Purpose

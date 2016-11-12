@@ -2,11 +2,6 @@ body {
     font-family: 'Share Tech Mono', monospace !important;
 }
 
-
-/*.nav a:not(.ciphered-name):hover {*/
-    /*border-bottom: 2px solid #fa8700;*/
-/*}*/
-
 .fa {
     margin-right: 4px;
 }
@@ -50,4 +45,18 @@ body {
 
 .nali:hover:after{
     transform: scaleX(1);
+}
+
+#cursor {
+    font-size: 22px;
+    font-weight: 800!important;
+}
+
+.subimg {
+    height: 120px;
+    width: 300px;
+}
+
+.is-loading {
+    visibility: hidden!important;
 }
