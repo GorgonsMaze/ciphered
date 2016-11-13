@@ -59,15 +59,18 @@ function modals() {
     // On 'About' nav click
     $('#about').on('click', function () {
         $('#aboutModal').addClass('is-active').fadeIn(500);
+        $('body').addClass('stop-scroll');
     });
     // On background click remove is-active class + set display
     $('.modal-background').on('click', function () {
         $('#aboutModal').removeClass('is-active');
+        $('body').removeClass('stop-scroll');
         $('.modal').css('display', 'none');
     });
     // On modal close click remove is-active class + set display
     $('.mod-close').on('click', function () {
         $('#aboutModal').removeClass('is-active');
+        $('body').removeClass('stop-scroll');
         $('.modal').css('display', 'none');
     });
 }
@@ -175,7 +178,7 @@ $(document).ready(function () {
             // alert(plaintext);
             var ciphertext = rot13(plaintext);
 
-            alert(ciphertext);
+            // alert(ciphertext);
             document.getElementById('response').innerHTML = ciphertext;
             // Clear input field
             // $('#enText').val('');
@@ -189,7 +192,7 @@ $(document).ready(function () {
         }
 
     });
-    // rot13("SERR PBQR PNZC");
+
 
 
 });
