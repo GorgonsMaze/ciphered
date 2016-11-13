@@ -58,5 +58,12 @@ body {
 }
 
 .is-loading {
-    visibility: hidden!important;
+    opacity: 0;
+}
+.progress.is-small {
+    opacity: 0;
+    height: 3px!important;
+}
+.progress:not(:last-child) {
+    margin-bottom: 0!important;
 }

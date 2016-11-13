@@ -38,13 +38,20 @@ function rot13(str) {
     }
 
     // Join elements in array as a string
+    // console.log(newArr.join(''));
     return newArr.join('');
 
 }
 
+function subCipher() {
 
-rot13("SERR PBQR PNZC");
+}
 
+function decrypt() {
+    $('#encryptMessage').on('click', function () {
+        $('.is-loading').show();
+    });
+}
 
 function modals() {
     // Set display to none -- allowing for fade-in and on click events
@@ -117,18 +124,30 @@ $(document).ready(function () {
         setInterval(cursorBlink, 1500);
     }, 2500);
 
-
     // On Choose Cipher drop down change
     $('#cipherSelect').on('change', function () {
+        $('#plain-key-title').html("Substitution Key:");
+        $('#cipher-key-title').html("Ciphertext:");
+
+        $('#enText').val('');
         var value =  $(this).val();
         var subArray = [1,2,3,4,5,6,7,8,9,10,11,12];
+        var plainkey = document.getElementById('plain-key-title');
+        var cipherkey = document.getElementById('cipher-key-title');
+
+
         var randSub = subArray[Math.floor(Math.random()*subArray.length)];
         if (value == "caesar") {
             // $('select.subselect>option:eq(13)').prop('selected', true);
-            $('#subSelect').val('13').prop('selected', true)
+            $('#subSelect').val('13').prop('selected', true);
+            plainkey.append('Plaintext');
+            cipherkey.append('Caesar Cipher / ROT13');
+
         }
         else if (value === "substitution") {
             $('#subSelect').val(randSub).prop('selected', true)
+            plainkey.append('Plaintext');
+            cipherkey.append('Key-'+randSub);
         }
     });
 
@@ -148,7 +167,29 @@ $(document).ready(function () {
     scroll();
     alerts();
     modals();
-    rot13("SERR PBQR PNZC");
+
+    $('#encryptMessage').on('click', function () {
+        var txt = document.getElementById('enText');
+        if (txt.value.length >= 1) {
+            var plaintext = $('#enText').val();
+            // alert(plaintext);
+            var ciphertext = rot13(plaintext);
+
+            alert(ciphertext);
+            document.getElementById('response').innerHTML = ciphertext;
+            // Clear input field
+            // $('#enText').val('');
+
+
+            // rot13("SERR PBQR PNZC");
+
+
+            // $('.is-loading').css('opacity', 1);
+            // $('.progress').css('opacity', 1);
+        }
+
+    });
+    // rot13("SERR PBQR PNZC");
 
 
 });
