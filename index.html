@@ -128,7 +128,7 @@
                 <p class="control">
   <span class="select">
     <select class="ciphselect" id="cipherSelect">
-        <option value="none">Select dropdown</option>
+        <option value="none" disabled selected>Select dropdown</option>
         <option value="caesar">Caesar Cipher</option>
         <option value="substitution">Substitution Cipher</option>
     </select>
@@ -140,7 +140,7 @@
                 <p class="control">
   <span class="select">
     <select class="subselect" id="subSelect">
-        <option value="none">Choose subtitution</option>
+        <option value="none" disabled selected>Choose subtitution</option>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -160,21 +160,23 @@
         </div>
         <label class="label">Enter Message</label>
         <p class="control">
-            <textarea class="textarea" placeholder="Type your message here"></textarea>
+            <textarea class="textarea" id="enText" placeholder="Type your message here"></textarea>
         </p>
 
         <p class="control">
-            <button class="button is-primary"><i class="fa fa-lock" aria-hidden="true"></i>
+            <button class="button is-primary" id="encryptMessage"><i class="fa fa-lock" aria-hidden="true"></i>
                 Encrypt
             </button>
-            <button class="button is-info is-outlined"><i class="fa fa-unlock-alt" aria-hidden="true"></i>
+            <button class="button is-info is-outlined" id="decryptMessage"><i class="fa fa-unlock-alt" aria-hidden="true"></i>
                 Decrypt
             </button>
             <button class="button is-link">Cancel</button>
         </p>
+        <progress class="progress is-small" value="15" max="100">15%</progress>
         <p class="control is-loading">
             <textarea class="textarea" placeholder="Encrypting message..."></textarea>
         </p>
+        <div id="response"></div>
     </div>
 </div>
 
@@ -182,8 +184,8 @@
 <section class="section">
     <div class="container">
         <article class="message">
-            <div class="message-header">
-                Subtitution Key:
+            <div class="message-header mds" id="plain-key-title">
+                Substitution Key:
             </div>
             <div class="message-body">
                 <h2 class="title is-3">
@@ -199,8 +201,8 @@
                     A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
                 </h2>
             </div>
-            <div class="message-header">
-                Ciphertext
+            <div class="message-header" id="cipher-key-title">
+                Ciphertext:
             </div>
         </article>
     </div>

@@ -57,6 +57,23 @@ body {
     width: 300px;
 }
 
+.stop-scroll {
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+}
+
 .is-loading {
-    visibility: hidden!important;
+    opacity: 0;
+}
+.progress.is-small {
+    opacity: 0;
+    height: 3px!important;
+}
+.progress:not(:last-child) {
+    margin-bottom: 0!important;
 }
