@@ -117,15 +117,17 @@ function scroll() {
     });
 }
 
+function keyBlock() {
+    var abcplain = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $('.abc-plaintext').append(abcplain.split('').join(' '));
+    var abccipher = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $('.abc-cipher').append(abccipher.split('').join(' '));
 
-$(document).ready(function () {
-    setTimeout(function () {
-        typeOut();
-    }, 1000);
 
-    setTimeout(function () {
-        setInterval(cursorBlink, 1500);
-    }, 2500);
+    var plainkey = document.getElementById('plain-key-title');
+    var cipherkey = document.getElementById('cipher-key-title');
+
+
 
     // On Choose Cipher drop down change
     $('#cipherSelect').on('change', function () {
@@ -134,13 +136,10 @@ $(document).ready(function () {
 
         $('#enText').val('');
         var value =  $(this).val();
+
         var subArray = [1,2,3,4,5,6,7,8,9,10,11,12];
-        var plainkey = document.getElementById('plain-key-title');
-        var cipherkey = document.getElementById('cipher-key-title');
-
-
         var randSub = subArray[Math.floor(Math.random()*subArray.length)];
-        if (value == "caesar") {
+         if (value == "caesar") {
             // $('select.subselect>option:eq(13)').prop('selected', true);
             $('#subSelect').val('13').prop('selected', true);
             plainkey.append('Plaintext');
@@ -153,6 +152,36 @@ $(document).ready(function () {
             cipherkey.append('Key-'+randSub);
         }
     });
+
+
+    // On Substitution Key Change
+    $('#subSelect').on('change', function () {
+        $('#plain-key-title').html("Substitution Key:");
+        $('#cipher-key-title').html("Ciphertext:");
+        var value = $(this).val();
+
+        if (value ===  '13') {
+            plainkey.append('Plaintext');
+            cipherkey.append('Caesar Cipher / ROT13');
+        }
+        else if (value >= '1' || value <= '12') {
+            plainkey.append('Plaintext');
+            cipherkey.append('Key-'+value);
+        }
+    });
+
+}
+
+$(document).ready(function () {
+
+    setTimeout(function () {
+        typeOut();
+    }, 1000);
+
+    setTimeout(function () {
+        setInterval(cursorBlink, 1500);
+    }, 2500);
+
 
     // On substitution cipher select drop down change
     $('#subSelect').on('change', function () {
@@ -170,6 +199,8 @@ $(document).ready(function () {
     scroll();
     alerts();
     modals();
+
+    keyBlock();
 
     $('#encryptMessage').on('click', function () {
         var txt = document.getElementById('enText');
