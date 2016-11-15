@@ -111,9 +111,17 @@ function cursorBlink() {
 
 function scroll() {
     $('.nav-encrypt-btn').on('click', function () {
+        // Scroll animation to input section
         $("html,body").animate({
             scrollTop: 200
-        }, 600)
+        }, 600);
+
+
+        // Flashes the input section
+        $('#encrypt-sec').fadeTo(1000, 0.25, function () {
+            $(this).fadeTo(800, 1);
+        });
+
     });
 }
 
@@ -127,6 +135,7 @@ function keyBlock() {
     var plainkey = document.getElementById('plain-key-title');
     var cipherkey = document.getElementById('cipher-key-title');
 
+    var c = ''; // variable to hold return cipher key
 
 
     // On Choose Cipher drop down change
@@ -139,23 +148,26 @@ function keyBlock() {
         $('#enText').val('');
         var value =  $(this).val();
 
+        $('.abc-cipher').text(''); // clear current text in cipher key block
+
+
         var subArray = [1,2,3,4,5,6,7,8,9,10,11,12];
         var randSub = subArray[Math.floor(Math.random()*subArray.length)];
          if (value == "caesar") {
-             $('.abc-cipher').text('');
-            // $('select.subselect>option:eq(13)').prop('selected', true);
              $('#subSelect').val('13').prop('selected', true);
              plainkey.append('Plaintext');
              cipherkey.append('Caesar Cipher / ROT13');
-             var c = keyChange(abcplain, "N");
+             c = keyChange(abcplain, 13);
              $('.abc-cipher').append(c);
 
          }
         else if (value === "substitution") {
-            $('#subSelect').val(randSub).prop('selected', true)
-            plainkey.append('Plaintext');
-            cipherkey.append('Key-'+randSub);
-        }
+             $('#subSelect').val(randSub).prop('selected', true)
+             plainkey.append('Plaintext');
+             cipherkey.append('Key-'+randSub);
+             c = keyChange(abcplain, randSub);
+             $('.abc-cipher').append(c);
+         }
     });
 
 
@@ -165,21 +177,30 @@ function keyBlock() {
         $('#cipher-key-title').html("Ciphertext:");
         var value = $(this).val();
 
+        $('.abc-cipher').text(''); // clear current text in cipher key block
+
         if (value ===  '13') {
+            $('#cipherSelect').val('caesar').prop('selected', true);
             plainkey.append('Plaintext');
             cipherkey.append('Caesar Cipher / ROT13');
+            c = keyChange(abcplain, value);
+            $('.abc-cipher').append(c);
+
         }
         else if (value >= '1' || value <= '12') {
+            $('#cipherSelect').val('substitution').prop('selected', true);
             plainkey.append('Plaintext');
             cipherkey.append('Key-'+value);
+            c = keyChange(abcplain, value);
+            $('.abc-cipher').append(c);
         }
     });
 
 }
 
 
-function keyChange(abc, char) {
-    var idx = abc.search(char);
+function keyChange(abc, idx) {
+    // var idx = abc.search(char);
     var answer = abc.slice(idx) + abc.slice(0,idx);
     return answer.split('').join(' ');
 }
@@ -202,17 +223,17 @@ $(document).ready(function () {
 
 
     // On substitution cipher select drop down change
-    $('#subSelect').on('change', function () {
-       var value = $(this).val();
-
-        if (value ===  '13') {
-            // $('select.ciphselect>option:eq(1)').prop('selected', true);
-            $('#cipherSelect').val('caesar').prop('selected', true);
-        }
-        else if (value >= '1' || value <= '12') {
-            $('#cipherSelect').val('substitution').prop('selected', true);
-        }
-    });
+    // $('#subSelect').on('change', function () {
+    //    var value = $(this).val();
+    //
+    //     if (value ===  '13') {
+    //         // $('select.ciphselect>option:eq(1)').prop('selected', true);
+    //         $('#cipherSelect').val('caesar').prop('selected', true);
+    //     }
+    //     else if (value >= '1' || value <= '12') {
+    //         $('#cipherSelect').val('substitution').prop('selected', true);
+    //     }
+    // });
 
     scroll();
     alerts();
