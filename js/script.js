@@ -131,6 +131,8 @@ function keyBlock() {
 
     // On Choose Cipher drop down change
     $('#cipherSelect').on('change', function () {
+        // Show Key Select DD
+        $('#key-col').show('slow');
         $('#plain-key-title').html("Substitution Key:");
         $('#cipher-key-title').html("Ciphertext:");
 
@@ -140,12 +142,15 @@ function keyBlock() {
         var subArray = [1,2,3,4,5,6,7,8,9,10,11,12];
         var randSub = subArray[Math.floor(Math.random()*subArray.length)];
          if (value == "caesar") {
+             $('.abc-cipher').text('');
             // $('select.subselect>option:eq(13)').prop('selected', true);
-            $('#subSelect').val('13').prop('selected', true);
-            plainkey.append('Plaintext');
-            cipherkey.append('Caesar Cipher / ROT13');
+             $('#subSelect').val('13').prop('selected', true);
+             plainkey.append('Plaintext');
+             cipherkey.append('Caesar Cipher / ROT13');
+             var c = keyChange(abcplain, "N");
+             $('.abc-cipher').append(c);
 
-        }
+         }
         else if (value === "substitution") {
             $('#subSelect').val(randSub).prop('selected', true)
             plainkey.append('Plaintext');
@@ -172,7 +177,20 @@ function keyBlock() {
 
 }
 
+
+function keyChange(abc, char) {
+    var idx = abc.search(char);
+    var answer = abc.slice(idx) + abc.slice(0,idx);
+    return answer.split('').join(' ');
+}
+
+
+
+
 $(document).ready(function () {
+
+    // Hide the Sub Key Drop Down until cipher is selected
+    $('#key-col').hide();
 
     setTimeout(function () {
         typeOut();
