@@ -77,7 +77,7 @@
 
 <div class="columns">
     <div class="column is-8 is-offset-2">
-        <div class="notification is-danger has-text-centered" id="notify">
+        <div class="notification is-danger has-text-centered animated" id="notify">
             <button class="delete del-warn"></button>
             Notice! Do not use this as a means for encrypting personal or important data.
         </div>
@@ -157,7 +157,8 @@
             <button class="button is-primary" id="encryptMessage"><i class="fa fa-lock" aria-hidden="true"></i>
                 Encrypt
             </button>
-            <button class="button is-info is-outlined" id="decryptMessage"><i class="fa fa-unlock-alt" aria-hidden="true"></i>
+            <button class="button is-info is-outlined" id="decryptMessage"><i class="fa fa-unlock-alt"
+                                                                              aria-hidden="true"></i>
                 Decrypt
             </button>
             <button class="button is-link">Cancel</button>
@@ -173,7 +174,7 @@
 
 <section class="section">
     <div class="container">
-        <article class="message">
+        <article class="message top-b">
             <div class="message-header mds" id="plain-key-title">
                 Substitution Key:
             </div>
@@ -181,9 +182,10 @@
                 <h2 class="title is-3 abc-plaintext"></h2>
             </div>
         </article>
-
-
-        <article class="message is-info">
+        <div class="arrows">
+            <i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i>
+        </div>
+        <article class="message is-info top-b">
             <div class="message-body">
                 <h2 class="title is-3 abc-cipher"></h2>
             </div>

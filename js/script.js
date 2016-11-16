@@ -15,14 +15,14 @@ function rot13(str) {
         var x = arr[i].charCodeAt(0);
 
         // If x >= 78 && <=90
-        if (x >= 78 && x <= 90) {
+        if (x >= 78 && x <= 90 || x >= 110 && x <= 122) {
             // We subtract 13 from its unicode number
             x = x - 13;
             // Return string character
             // and push into new array
             newArr.push(String.fromCharCode(x));
 
-        } else if (x < 78 && x > 64) {
+        } else if (x > 64 && x < 78 || x > 96 && x < 110) {
             // We add 13 from its unicode number
             x = x + 13;
             // Return string character
@@ -39,7 +39,7 @@ function rot13(str) {
 
     // Join elements in array as a string
     // console.log(newArr.join(''));
-    return newArr.join('');
+    return newArr.join('').toUpperCase();
 
 }
 
@@ -128,8 +128,7 @@ function scroll() {
 function keyBlock() {
     var abcplain = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $('.abc-plaintext').append(abcplain.split('').join(' '));
-    var abccipher = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $('.abc-cipher').append(abccipher.split('').join(' '));
+    $('.abc-cipher').append(abcplain.split('').join(' '));
 
 
     var plainkey = document.getElementById('plain-key-title');
@@ -198,7 +197,10 @@ function keyBlock() {
 
 }
 
+// Checks which DD option is selected
+function checkText(v) {
 
+}
 function keyChange(abc, idx) {
     // var idx = abc.search(char);
     var answer = abc.slice(idx) + abc.slice(0,idx);
@@ -222,46 +224,53 @@ $(document).ready(function () {
     }, 2500);
 
 
-    // On substitution cipher select drop down change
-    // $('#subSelect').on('change', function () {
-    //    var value = $(this).val();
-    //
-    //     if (value ===  '13') {
-    //         // $('select.ciphselect>option:eq(1)').prop('selected', true);
-    //         $('#cipherSelect').val('caesar').prop('selected', true);
-    //     }
-    //     else if (value >= '1' || value <= '12') {
-    //         $('#cipherSelect').val('substitution').prop('selected', true);
-    //     }
-    // });
-
     scroll();
     alerts();
     modals();
-
     keyBlock();
 
-    $('#encryptMessage').on('click', function () {
-        var txt = document.getElementById('enText');
-        if (txt.value.length >= 1) {
-            var plaintext = $('#enText').val();
-            // alert(plaintext);
-            var ciphertext = rot13(plaintext);
-
-            // alert(ciphertext);
-            document.getElementById('response').innerHTML = ciphertext;
-            // Clear input field
-            // $('#enText').val('');
-
-
-            // rot13("SERR PBQR PNZC");
-
-
-            // $('.is-loading').css('opacity', 1);
-            // $('.progress').css('opacity', 1);
-        }
-
+    $('#enText').on('focus', function () {
+       $('#notify').addClass('fadeInLeft');
     });
+
+    var caesarddl = document.getElementById('cipherSelect');
+    var keyddl = document.getElementById('subSelect');
+    if (document.getElementById('cipherSelect').value == 'caesar') {
+
+        $('#encryptMessage').on('click', function () {
+            var txt = document.getElementById('enText');
+            if (txt.value.length >= 1) {
+                var plaintext = $('#enText').val();
+                // alert(plaintext);
+                var ciphertext = rot13(plaintext);
+
+                // alert(ciphertext);
+                document.getElementById('response').innerHTML = ciphertext;
+                // Clear input field
+                // $('#enText').val('');
+
+
+
+                // $('.is-loading').css('opacity', 1);
+                // $('.progress').css('opacity', 1);
+            }
+
+        });
+    } else {
+        $('#encryptMessage').on('click', function () {
+            alert("You need to select a cipher");
+        });
+    }
+
+
+    console.log("PVCURERQ!!!!!!!");
+    console.log("    ______ _     _ _______ _     _ ______  _______ ______ _______");
+    console.log("    (_____ (_)   (_|_______|_)   (_|_____ \\(_______|_____ (_______)");
+    console.log("    _____) )     _ _       _     _ _____) )_____   _____) )     _");
+    console.log("    |  ____/ |   | | |     | |   | |  __  /|  ___) |  __  / |   | |");
+    console.log("    | |     \\ \\ / /| |_____| |___| | |  |\\ \\| |_____| |  \\ \\ |__| |");
+    console.log("    |_|      \\___/  \\______)\\_____/|_|   |_|_______)_|   |_\\______)");
+
 
 
 
