@@ -11,9 +11,12 @@ Ciphered is a OS project that encrypts/decrypts messages using codes or substitu
 
 # Clone
 1. On main page of repository click **Clone or Download** button 
+
 ![Image](http://i.imgur.com/VU0YMdI.png)
 
-2. Then click copy the URL, or click the clipboard icon to copy the URL ![Image](http://i.imgur.com/SiPXXFl.png)
+2. Then click copy the URL, or click the clipboard icon to copy the URL 
+![Image](http://i.imgur.com/SiPXXFl.png)
+
 
 3. Open your Terminal.
 

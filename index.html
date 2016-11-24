@@ -10,7 +10,6 @@
     <link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono" rel="stylesheet">
 </head>
 <body>
-<!-- Begin Navigation -->
 <nav class="nav has-shadow">
     <div class="nav-left">
         <a class="nav-item ciphered-name" href="#">
@@ -18,7 +17,7 @@
             <span>Ciphered</span>
         </a>
     </div>
-    <!-- Hamburger -->
+
     <span class="nav-toggle">
     <span></span>
     <span></span>
@@ -44,9 +43,6 @@
         </span>
     </div>
 </nav>
-<!-- End Navigation -->
-
-<!-- Hero -->
 <section class="hero is-info is-bold">
     <div class="hero-body">
         <div class="container">
@@ -59,8 +55,6 @@
         </div>
     </div>
 </section>
-<!-- End Hero-->
-
 <div class="container">
     <section class="section">
         <div class="container">
@@ -74,7 +68,6 @@
         </div>
     </section>
 </div>
-
 <div class="columns">
     <div class="column is-8 is-offset-2">
         <div class="notification is-danger has-text-centered animated" id="notify">
@@ -83,8 +76,6 @@
         </div>
     </div>
 </div>
-
-
 <div class="modal" id="aboutModal">
     <div class="modal-background"></div>
     <div class="modal-card">
@@ -107,8 +98,9 @@
 </div>
 
 <!-- Begin Content -->
+
 <div class="columns" id="encrypt-sec">
-    <div class="column is-half is-offset-one-quarter">
+    <div class="column is-half-desktop is-half-tablet is-10-mobile is-offset-1-mobile is-offset-one-quarter">
         <div class="columns">
 
             <div class="column is-half">
@@ -119,8 +111,12 @@
         <option value="none" disabled selected>Select dropdown</option>
         <option value="caesar">Caesar Cipher</option>
         <option value="substitution">Substitution Cipher</option>
+        <option value="rot13">ROT13</option>
     </select>
   </span>
+                    <i class="fa fa-warning"></i>
+                    <span class="help is-danger">You must select a cipher</span>
+
                 </p>
             </div>
             <div class="column is-half">
@@ -145,9 +141,12 @@
         <option value="13">13</option>
     </select>
   </span>
+                    </p>
                 </div>
             </div>
         </div>
+
+
         <label class="label">Enter Message</label>
         <p class="control">
             <textarea class="textarea" id="enText" placeholder="Type your message here"></textarea>
@@ -161,7 +160,7 @@
                                                                               aria-hidden="true"></i>
                 Decrypt
             </button>
-            <button class="button is-link">Cancel</button>
+            <button class="button is-link" id="clearCancel">Cancel</button>
         </p>
         <progress class="progress is-small" value="15" max="100">15%</progress>
         <p class="control is-loading">
@@ -170,8 +169,6 @@
         <div id="response"></div>
     </div>
 </div>
-
-
 <section class="section">
     <div class="container">
         <article class="message top-b">
@@ -183,7 +180,21 @@
             </div>
         </article>
         <div class="arrows">
-            <i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i>
+            <i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i><i class="fa fa-arrows-v fa-2x"
+                                                                      aria-hidden="true"></i><i
+                class="fa fa-arrows-v fa-2x" aria-hidden="true"></i><i class="fa fa-arrows-v fa-2x"
+                                                                       aria-hidden="true"></i><i
+                class="fa fa-arrows-v fa-2x" aria-hidden="true"></i><i class="fa fa-arrows-v fa-2x"
+                                                                       aria-hidden="true"></i><i
+                class="fa fa-arrows-v fa-2x" aria-hidden="true"></i><i class="fa fa-arrows-v fa-2x"
+                                                                       aria-hidden="true"></i><i
+                class="fa fa-arrows-v fa-2x" aria-hidden="true"></i><i class="fa fa-arrows-v fa-2x"
+                                                                       aria-hidden="true"></i><i
+                class="fa fa-arrows-v fa-2x" aria-hidden="true"></i><i class="fa fa-arrows-v fa-2x"
+                                                                       aria-hidden="true"></i><i
+                class="fa fa-arrows-v fa-2x" aria-hidden="true"></i><i class="fa fa-arrows-v fa-2x"
+                                                                       aria-hidden="true"></i><i
+                class="fa fa-arrows-v fa-2x" aria-hidden="true"></i>
         </div>
         <article class="message is-info top-b">
             <div class="message-body">
