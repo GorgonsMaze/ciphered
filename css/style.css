@@ -134,3 +134,19 @@ body {
 #notify {
     opacity:0;
 }
+
+.fa-warning {
+    margin-top: 8px;
+    visibility: hidden;
+}
+.help {
+    visibility: hidden;
+}
+
+.nav-left {
+    margin-left: 8px;
+}
+.nav-right {
+    margin-right: 8px;
+
+}
