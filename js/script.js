@@ -38,10 +38,23 @@ function rotateCharacter(char, rot) {
 
 }
 
-function encrypt() {
-    
+/**
+ * @param text
+ * @param rot
+ * @returns {string}
+ */
+function encryptCeasar(text, rot) {
+    var encryptedMessage = [];
+    for (var i = 0; i < text.length; i++) {
+        encryptedMessage.push(rotateCharacter(i, rot));
+
+    }
+    return encryptedMessage.join('');
 }
 
+/** TODO : Add vigenere cipher function
+ *  TODO: Update Homepage + About + Ciphers [Modals]
+ */
 /** end WIP **/
 
 
