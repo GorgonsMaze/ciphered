@@ -1,8 +1,98 @@
+/** Created by ianarsenault on 11/9/16. */
+
+/***+++++++++++++++  WIP ++++++++++++++++++++**/
 /**
- * Created by ianarsenault on 11/9/16.
+ * @param str
+ * @returns {Array|{index: number, input: string}|*}
  */
+function isAlpha(str) {
+    var regex = /[^A-Za-z\s]/;
+    return str.match(regex);
+}
 
 
+/**
+ * @param letter
+ * @returns {*}
+ */
+function alphabetPosition(letter) {
+    if (letter.charCodeAt(0) >= 97 && letter.charCodeAt(0) <= 122) {
+        return letter.charCodeAt(0) - 97;
+    }
+    else if (letter.charCodeAt(0) >= 65 && letter.charCodeAt(0) <= 90) {
+        return letter.charCodeAt(0) - 65;
+    }
+    else {
+        return letter.charCodeAt(0);
+    }
+}
+
+
+/**
+ * @param char
+ * @param rot
+ * @returns {string}
+ */
+function rotateCharacter(char, rot) {
+    var c = alphabetPosition(char);
+    if (char == char.toUpperCase()) {
+        return String.fromCharCode(((c + rot) % 26) + 65);
+    }
+    else if (char == char.toLowerCase()) {
+        return String.fromCharCode(((c + rot) % 26) + 97);
+    }
+    else {
+        return String.fromCharCode(c);
+    }
+
+}
+
+
+/**
+ * @param text
+ * @param rot
+ * @returns {string}
+ */
+function encryptCeasar(text, rot) {
+    var encryptedMessage = [];
+    for (var i = 0; i < text.length; i++) {
+        encryptedMessage.push(rotateCharacter(i, rot));
+    }
+    return encryptedMessage.join('');
+}
+
+/* TODO : Add vigenere cipher function */
+/**
+ * @param text
+ * @param key
+ * @returns {string}
+ */
+function encryptVigenere(text, key) {
+    var encryptedMessage = [];
+    var idx = 0;
+
+    var keyString = '';
+
+    // while () {
+    //
+    // }
+
+    return encryptedMessage.join('');
+}
+
+
+
+
+/**
+ *  TODO: Update Homepage + About + Ciphers [Modals]
+ */
+/** end WIP **/
+
+
+/**
+ * @param str
+ * @returns {string}
+ */
 function rot13(str) {
 
     // Create empty array
@@ -170,6 +260,7 @@ function screenChange() {
     }
 }
 
+
 function keyBlock() {
 
     var abcplain = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -188,7 +279,7 @@ function keyBlock() {
     $('#cipherSelect').on('change', function () {
         // Show Key Select DD
         $(this).removeClass('is-danger');
-        $('.help').css("visibility", "hidden");
+        $('.h-select').css("visibility", "hidden");
         $('.fa-warning').css('visibility', 'hidden');
 
         $('#key-col').show('slow');
@@ -293,6 +384,11 @@ function checkText(v) {
 
 }
 
+/**
+ * @param abc
+ * @param idx
+ * @returns {string}
+ */
 function keyChange(abc, idx) {
     // var idx = abc.search(char);
 
@@ -361,15 +457,33 @@ $(document).ready(function () {
         // alert("YA'LL NEVER PICKED SOMETHING!");
         if (document.getElementById('cipherSelect').value === "none") {
             var cipherDDL = $('#cipherSelect');
+            // Add red border class
             cipherDDL.addClass('is-danger');
-            $('.help').css("visibility", "visible");
-            $('.fa-warning').css('visibility', 'visible');
+            // Select DD text warning
+            $('.h-select').css("visibility", "visible");
+            // Select DD icon warning
+            $('.s-warn').css('visibility', 'visible');
+        }
+        else if (document.getElementById('enText').value === '') {
+            // alert("Text area is empty!");
+            var txtArea = $('#enText');
+            // Add red border class
+            txtArea.addClass('is-danger');
+            // Text Warning
+            $('.h-text').css('visibility', 'visible');
+            // Text icon warning
+            $('.t-warn').css('visibility', 'visible');
+
         }
 
     });
 
 
-
+    $('#enText').on('change', function () {
+        if ($(this).val() > '0') {
+            $(this).removeClass('is-danger');
+        }
+    });
 
     // On cancel click - clear all selected elements + textarea
     $('#clearCancel').on('click', function () {
