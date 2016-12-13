@@ -5,23 +5,24 @@ body {
 .fa {
     margin-right: 4px;
 }
+
 .nav-encrypt-btn {
-    color: #fff!important;
+    color: #fff !important;
     background-color: #ff9a2b;
 }
 
 .content a {
-    color: #7a7a7a!important;
+    color: #7a7a7a !important;
 }
+
 .content a:hover {
-    color: #fa8700!important;
+    color: #fa8700 !important;
 }
 
 .footer {
     background-color: whitesmoke;
-    padding: 39px 20px 15px!important;
+    padding: 39px 20px 15px !important;
 }
-
 
 .nali {
     display: inline-block;
@@ -43,13 +44,13 @@ body {
     transition: transform 250ms ease-in-out;
 }
 
-.nali:hover:after{
+.nali:hover:after {
     transform: scaleX(1);
 }
 
 #cursor {
     font-size: 22px;
-    font-weight: 800!important;
+    font-weight: 800 !important;
 }
 
 .subimg {
@@ -70,22 +71,25 @@ body {
 .is-loading {
     opacity: 0;
 }
+
 .progress.is-small {
     opacity: 0;
-    height: 3px!important;
+    height: 3px !important;
 }
+
 .progress:not(:last-child) {
-    margin-bottom: 0!important;
+    margin-bottom: 0 !important;
 }
 
 .top-b {
-    margin: 5px 0!important;
+    margin: 5px 0 !important;
 }
 
 .fa-arrows-v {
     margin: 0 20px !important;
     color: #c8c2c2;
 }
+
 .arrows {
     margin-left: 8px;
 }
@@ -96,7 +100,6 @@ body {
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
 }
-
 
 @-webkit-keyframes fadeInLeft {
     from {
@@ -132,13 +135,21 @@ body {
 }
 
 #notify {
-    opacity:0;
+    opacity: 0;
 }
 
 .fa-warning {
-    margin-top: 8px;
     visibility: hidden;
 }
+
+.s-warn {
+    margin-top: 8px;
+}
+
+.t-warn {
+    margin-top: 4px;
+}
+
 .help {
     visibility: hidden;
 }
@@ -146,6 +157,7 @@ body {
 .nav-left {
     margin-left: 8px;
 }
+
 .nav-right {
     margin-right: 8px;
 
