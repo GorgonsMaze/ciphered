@@ -1,6 +1,14 @@
 /** Created by ianarsenault on 11/9/16. */
 
 /***+++++++++++++++  WIP ++++++++++++++++++++**/
+/**
+ * @param str
+ * @returns {Array|{index: number, input: string}|*}
+ */
+function isAlpha(str) {
+    var regex = /[^A-Za-z\s]/;
+    return str.match(regex);
+}
 
 
 /**
@@ -18,6 +26,7 @@ function alphabetPosition(letter) {
         return letter.charCodeAt(0);
     }
 }
+
 
 /**
  * @param char
@@ -38,6 +47,7 @@ function rotateCharacter(char, rot) {
 
 }
 
+
 /**
  * @param text
  * @param rot
@@ -47,12 +57,33 @@ function encryptCeasar(text, rot) {
     var encryptedMessage = [];
     for (var i = 0; i < text.length; i++) {
         encryptedMessage.push(rotateCharacter(i, rot));
-
     }
     return encryptedMessage.join('');
 }
 
-/** TODO : Add vigenere cipher function
+/* TODO : Add vigenere cipher function */
+/**
+ * @param text
+ * @param key
+ * @returns {string}
+ */
+function encryptVigenere(text, key) {
+    var encryptedMessage = [];
+    var idx = 0;
+
+    var keyString = '';
+
+    // while () {
+    //
+    // }
+
+    return encryptedMessage.join('');
+}
+
+
+
+
+/**
  *  TODO: Update Homepage + About + Ciphers [Modals]
  */
 /** end WIP **/
