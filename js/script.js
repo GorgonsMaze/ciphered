@@ -61,7 +61,7 @@ function encryptCeasar(text, rot) {
     return encryptedMessage.join('');
 }
 
-/* TODO : Add vigenere cipher function */
+
 /**
  * @param text
  * @param key
@@ -88,6 +88,16 @@ function encryptVigenere(text, key) {
     return encryptedMessage.join('');
 }
 
+/* TODO : Add vigenere cipher decryption function */
+/**
+ * @param text
+ * @param key
+ * @returns {string}
+ */
+function decryptVigenere(text, key) {
+    var decryptedMessage = [];
+    return decryptedMessage.join('');
+}
 
 
 
