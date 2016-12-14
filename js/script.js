@@ -6,7 +6,7 @@
  * @returns {Array|{index: number, input: string}|*}
  */
 function isAlpha(str) {
-    var regex = /[^A-Za-z\s]/;
+    var regex = /[A-Za-z]/;
     return str.match(regex);
 }
 
@@ -70,12 +70,20 @@ function encryptCeasar(text, rot) {
 function encryptVigenere(text, key) {
     var encryptedMessage = [];
     var idx = 0;
+    var i = 0;
+    // var keyString = text.replace(/[a-z]/gi, c => key[i++ % key.length]);  ES6
+    var keyString = text.replace(/[a-z]/gi, function(c) { return c == ' ' ? c : key[i++ % key.length]}); // ES5
+    // var keyString = text.replace(/[a-z]/gi, (a, b) => a == ' ' ? a : key[i++ % key.length]);
 
-    var keyString = '';
-
-    // while () {
-    //
-    // }
+    while (idx < text.length) {
+        if (isAlpha(text[idx])) {
+            encryptedMessage.push(rotateCharacter(text[idx], alphabetPosition(keyString[idx])))
+        }
+        else {
+            encryptedMessage.push(text[idx])
+        }
+        idx++;
+    }
 
     return encryptedMessage.join('');
 }
