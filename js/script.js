@@ -99,7 +99,25 @@ function decryptVigenere(text, key) {
     return decryptedMessage.join('');
 }
 
+/** TODO Add Uppercase and Lowercase check functions
+ * */
 
+/**
+ * @param char
+ * @returns {boolean}
+ */
+function isUpperCase(char) {
+    return char == char.toUpperCase();
+}
+
+/**
+ * @param char
+ * @returns {boolean}
+ */
+function isLowerCase(char) {
+    return char == char.toLowerCase();
+    
+}
 
 /**
  *  TODO: Update Homepage + About + Ciphers [Modals]
