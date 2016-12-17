@@ -6,8 +6,15 @@ UI for input = plaintext / output = cipher
 Ciphered is a OS project that encrypts/decrypts messages using codes or substitution ciphers with a friendly interface. Made for friends, to allow each other to post hidden messages on twitter, email, or chat rooms. It's meant to be a fun experience for people to learn about simple encryption methods that have been commonly used throughout history.
 
 
+## Work In Progress
+* Updating Content
+* Validating User Input
+* Displaying Encrypt/Decrypted messages
+
+
 # How To Contribute
  ... coming soon
+
 
 # Clone
 1. On main page of repository click **Clone or Download** button 
