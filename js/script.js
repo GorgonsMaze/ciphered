@@ -171,9 +171,6 @@ function rot13(str) {
 
 }
 
-function subCipher() {
-
-}
 
 function decrypt() {
 
@@ -434,6 +431,7 @@ function keyChange(abc, idx) {
 }
 
 
+
 $(document).ready(function () {
 
 
@@ -489,6 +487,21 @@ $(document).ready(function () {
     //     });
     // }
 
+
+
+    // in text area - on change validate whether anything has been entered by the user
+    $('#enText').keyup(function () {
+        // alert("keyup");
+        if ($(this) > '0') {
+            $(this).removeClass('is-danger');
+            // Text Warning
+            $('.h-text').css('visibility', 'hidden');
+            // Text icon warning
+            $('.t-warn').css('visibility', 'hidden');
+        }
+    });
+
+
     $('#encryptMessage').on('click', function () {
         // alert("YA'LL NEVER PICKED SOMETHING!");
         if (document.getElementById('cipherSelect').value === "none") {
@@ -500,7 +513,7 @@ $(document).ready(function () {
             // Select DD icon warning
             $('.s-warn').css('visibility', 'visible');
         }
-        else if (document.getElementById('enText').value === '') {
+        else if (document.getElementById('enText').value < '0') {
             // alert("Text area is empty!");
             var txtArea = $('#enText');
             // Add red border class
@@ -514,12 +527,15 @@ $(document).ready(function () {
 
     });
 
-
-    $('#enText').on('change', function () {
-        if ($(this).val() > '0') {
-            $(this).removeClass('is-danger');
-        }
-    });
+    // $('#enText').on('keyup', function () {
+    //     if (document.getElementById('#enText') > '0') {
+    //         $(this).removeClass('is-danger');
+    //         // Text Warning
+    //         $('.h-text').css('visibility', 'hidden');
+    //         // Text icon warning
+    //         $('.t-warn').css('visibility', 'hidden');
+    //     }
+    // });
 
     // On cancel click - clear all selected elements + textarea
     $('#clearCancel').on('click', function () {
