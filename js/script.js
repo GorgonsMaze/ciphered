@@ -56,7 +56,12 @@ function rotateCharacter(char, rot) {
 function encryptCeasar(text, rot) {
     var encryptedMessage = [];
     for (var i = 0; i < text.length; i++) {
-        encryptedMessage.push(rotateCharacter(i, rot));
+        if (isAlpha(text[i])) {
+            encryptedMessage.push(rotateCharacter(text[i], rot));
+        }
+        else {
+            encryptedMessage.push(text[i]);
+        }
     }
     return encryptedMessage.join('');
 }
@@ -88,6 +93,7 @@ function encryptVigenere(text, key) {
     return encryptedMessage.join('');
 }
 
+
 /* TODO : Add vigenere cipher decryption function */
 /**
  * @param text
@@ -99,8 +105,6 @@ function decryptVigenere(text, key) {
     return decryptedMessage.join('');
 }
 
-/** TODO Add Uppercase and Lowercase check functions
- * */
 
 /**
  * @param char
@@ -527,15 +531,6 @@ $(document).ready(function () {
 
     });
 
-    // $('#enText').on('keyup', function () {
-    //     if (document.getElementById('#enText') > '0') {
-    //         $(this).removeClass('is-danger');
-    //         // Text Warning
-    //         $('.h-text').css('visibility', 'hidden');
-    //         // Text icon warning
-    //         $('.t-warn').css('visibility', 'hidden');
-    //     }
-    // });
 
     // On cancel click - clear all selected elements + textarea
     $('#clearCancel').on('click', function () {
