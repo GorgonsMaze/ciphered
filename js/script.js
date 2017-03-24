@@ -460,7 +460,7 @@ $(document).ready(function () {
 
     // On text area focus add animation class to notifcation alert
     $('#enText').on('focus', function () {
-        $('#notify').addClass('fadeInLeft');
+        $('#notify').addClass('flash');
     });
 
     var caesarddl = document.getElementById('cipherSelect');
@@ -505,9 +505,12 @@ $(document).ready(function () {
         }
     });
 
+    // Display for encrypted/decrypted text
+    var displayMessage = document.getElementById('response');
 
     $('#encryptMessage').on('click', function () {
         // alert("YA'LL NEVER PICKED SOMETHING!");
+        // Checks to make sure cipher dd is selected
         if (document.getElementById('cipherSelect').value === "none") {
             var cipherDDL = $('#cipherSelect');
             // Add red border class
@@ -517,6 +520,7 @@ $(document).ready(function () {
             // Select DD icon warning
             $('.s-warn').css('visibility', 'visible');
         }
+        // Checks to make sure textarea has text
         else if (document.getElementById('enText').value < '0') {
             // alert("Text area is empty!");
             var txtArea = $('#enText');
@@ -528,6 +532,15 @@ $(document).ready(function () {
             $('.t-warn').css('visibility', 'visible');
 
         }
+        // If textarea has text do....
+        else if (document.getElementById('enText') >= '1') {
+            console.log(document.getElementById('enText').value);
+            displayMessage.innerHTML = document.getElementById('enText').value;
+
+        }
+
+        // TODO: If user enters text before selecting a cipher, keep text in textarea rather than clear
+
 
     });
 
@@ -547,5 +560,12 @@ $(document).ready(function () {
     console.log("    | |     \\ \\ / /| |_____| |___| | |  |\\ \\| |_____| |  \\ \\ |__| |");
     console.log("    |_|      \\___/  \\______)\\_____/|_|   |_|_______)_|   |_\\______)");
 
+
+/*
+    $.getJSON('http://my-api.com/json/', data => {
+        $.each(data, (key, value) => {
+        console.log(key + ' => ' + value); });
+    });
+*/
 
 });

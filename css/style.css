@@ -101,41 +101,29 @@ body {
     animation-fill-mode: both;
 }
 
-@-webkit-keyframes fadeInLeft {
-    from {
-        opacity: 0;
-        -webkit-transform: translate3d(-100%, 0, 0);
-        transform: translate3d(-100%, 0, 0);
-    }
-
-    to {
+@-webkit-keyframes flash {
+    from, 50%, to {
         opacity: 1;
-        -webkit-transform: none;
-        transform: none;
     }
-}
 
-@keyframes fadeInLeft {
-    from {
+    25%, 75% {
         opacity: 0;
-        -webkit-transform: translate3d(-100%, 0, 0);
-        transform: translate3d(-100%, 0, 0);
     }
+}
 
-    to {
+@keyframes flash {
+    from, 50%, to {
         opacity: 1;
-        -webkit-transform: none;
-        transform: none;
+    }
+
+    25%, 75% {
+        opacity: 0;
     }
 }
 
-.fadeInLeft {
-    -webkit-animation-name: fadeInLeft;
-    animation-name: fadeInLeft;
-}
-
-#notify {
-    opacity: 0;
+.flash {
+    -webkit-animation-name: flash;
+    animation-name: flash;
 }
 
 .fa-warning {
