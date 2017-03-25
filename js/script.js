@@ -546,16 +546,19 @@ $(document).ready(function () {
             displayMessage.innerHTML = document.getElementById('enText').value;
 
 
+            //Test the text
             console.log(document.getElementById('enText').value);
 
             // TODO: Check value of cipher to determine which function it goes to
 
+            // Test the substitution key value
             console.log(document.getElementById('subSelect').value);
 
 
             // Test to make sure function works
-            console.log(encryptCeasar(document.getElementById('enText').value, 13));
-
+            console.log(encryptCeasar(document.getElementById('enText').value, parseInt(document.getElementById('subSelect').value)));
+            console.log(encryptCeasar(document.getElementById('enText').value, 1));
+            console.log(encryptCeasar("abc", 1));
 
         }
 
