@@ -505,8 +505,14 @@ $(document).ready(function () {
         }
     });
 
+    // Text
+    var s = document.getElementById('enText');
     // Display for encrypted/decrypted text
     var displayMessage = document.getElementById('response');
+    // Cipher Selected
+    var cipherSelected = document.getElementById('cipherSelect');
+    // Rotation Key
+    var rotationKey = document.getElementById('subSelect');
 
     $('#encryptMessage').on('click', function () {
         // alert("YA'LL NEVER PICKED SOMETHING!");
@@ -535,11 +541,28 @@ $(document).ready(function () {
         // If textarea has text do....
         else if (document.getElementById('enText') >= '1') {
             console.log(document.getElementById('enText').value);
+
+            // Display plain message text
             displayMessage.innerHTML = document.getElementById('enText').value;
+
+
+            console.log(document.getElementById('enText').value);
+
+            // TODO: Check value of cipher to determine which function it goes to
+
+            console.log(document.getElementById('subSelect').value);
+
+
+            // Test to make sure function works
+            console.log(encryptCeasar(document.getElementById('enText').value, 13));
+
 
         }
 
         // TODO: If user enters text before selecting a cipher, keep text in textarea rather than clear
+        // TODO: Use counter to stop clearing of substitution rotation and cipher drop downs if user has not run program
+
+
 
 
     });
