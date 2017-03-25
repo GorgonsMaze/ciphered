@@ -7,6 +7,7 @@ Ciphered is a OS project that encrypts/decrypts messages using codes or substitu
 
 
 ## Work In Progress
+* Types of Ciphers / History
 * Updating Content
 * Validating User Input
 * Displaying Encrypt/Decrypted messages
