@@ -77,7 +77,9 @@ function encryptVigenere(text, key) {
     var idx = 0;
     var i = 0;
     // var keyString = text.replace(/[a-z]/gi, c => key[i++ % key.length]);  ES6
-    var keyString = text.replace(/[a-z]/gi, function(c) { return c == ' ' ? c : key[i++ % key.length]}); // ES5
+    var keyString = text.replace(/[a-z]/gi, function (c) {
+        return c == ' ' ? c : key[i++ % key.length]
+    }); // ES5
     // var keyString = text.replace(/[a-z]/gi, (a, b) => a == ' ' ? a : key[i++ % key.length]);
 
     while (idx < text.length) {
@@ -120,7 +122,7 @@ function isUpperCase(char) {
  */
 function isLowerCase(char) {
     return char == char.toLowerCase();
-    
+
 }
 
 /**
@@ -435,7 +437,6 @@ function keyChange(abc, idx) {
 }
 
 
-
 $(document).ready(function () {
 
 
@@ -463,8 +464,6 @@ $(document).ready(function () {
         $('#notify').addClass('flash');
     });
 
-    var caesarddl = document.getElementById('cipherSelect');
-    var keyddl = document.getElementById('subSelect');
     // if (document.getElementById('cipherSelect').value == 'caesar') {
     //
     //     $('#encryptMessage').on('click', function () {
@@ -492,7 +491,6 @@ $(document).ready(function () {
     // }
 
 
-
     // in text area - on change validate whether anything has been entered by the user
     $('#enText').keyup(function () {
         // alert("keyup");
@@ -510,7 +508,8 @@ $(document).ready(function () {
     // Display for encrypted/decrypted text
     var displayMessage = document.getElementById('response');
     // Cipher Selected
-    var cipherSelected = document.getElementById('cipherSelect');
+
+
     // Rotation Key
     var rotationKey = document.getElementById('subSelect');
 
@@ -540,11 +539,16 @@ $(document).ready(function () {
         }
         // If textarea has text do....
         else if (document.getElementById('enText') >= '1') {
-            console.log(document.getElementById('enText').value);
+            var cipherSelected = document.getElementById('cipherSelect').value;
 
-            // Display plain message text
-            displayMessage.innerHTML = document.getElementById('enText').value;
+            if (cipherSelected == 'caesar' || cipherSelected == 'substitution' || cipherSelected == 'rot13') {
+                // Display plain message text
+                displayMessage.innerHTML = encryptCeasar(document.getElementById('enText').value, parseInt(document.getElementById('subSelect').value));
 
+            } else if (cipherSelected == 'vigenere') {
+                // TODO : Pass vigenere dd value + string key (add input in index)
+                displayMessage.innerHTML = encryptVigenere();
+            }
 
             //Test the text
             console.log(document.getElementById('enText').value);
@@ -557,15 +561,11 @@ $(document).ready(function () {
 
             // Test to make sure function works
             console.log(encryptCeasar(document.getElementById('enText').value, parseInt(document.getElementById('subSelect').value)));
-            console.log(encryptCeasar(document.getElementById('enText').value, 1));
-            console.log(encryptCeasar("abc", 1));
 
         }
 
         // TODO: If user enters text before selecting a cipher, keep text in textarea rather than clear
         // TODO: Use counter to stop clearing of substitution rotation and cipher drop downs if user has not run program
-
-
 
 
     });
@@ -587,11 +587,11 @@ $(document).ready(function () {
     console.log("    |_|      \\___/  \\______)\\_____/|_|   |_|_______)_|   |_\\______)");
 
 
-/*
-    $.getJSON('http://my-api.com/json/', data => {
-        $.each(data, (key, value) => {
-        console.log(key + ' => ' + value); });
-    });
-*/
+    /*
+     $.getJSON('http://my-api.com/json/', data => {
+     $.each(data, (key, value) => {
+     console.log(key + ' => ' + value); });
+     });
+     */
 
 });
