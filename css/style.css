@@ -152,3 +152,22 @@ body {
     margin-right: 8px;
 
 }
+
+#encryptMessage:hover {
+    background-color: transparent;
+    color: #3273dc;
+    border-bottom: 3px solid #dc060d;
+    -webkit-transition: background-color .25s ease-in-out;
+    -moz-transition: background-color .25s ease-in-out;
+    -ms-transition: background-color .25s ease-in-out;
+    -o-transition: background-color .25s ease-in-out;
+    transition: background-color .25s ease-in-out;
+}
+
+#clearCancel {
+    margin-top: 3px;
+}
+
+.fa-arrows-h {
+    margin: 7px;
+}
