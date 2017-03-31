@@ -436,10 +436,30 @@ function keyChange(abc, idx) {
 
 }
 
+/**
+ * Method for progress bar animation
+ */
+function loader() {
+
+    var progress = document.getElementById("progbar");
+
+    progress.style.display = "block";
+
+    var width = 1;
+    var id = setInterval(frame, 10);
+    function frame() {
+        if (width >= 100) {
+            clearInterval(id);
+            progress.style.width = 0;
+        } else {
+            width++;
+            progress.style.width = width + '%';
+        }
+    }
+
+}
 
 $(document).ready(function () {
-
-
 
     // Hide the Sub Key Drop Down until cipher is selected
     $('#key-col').hide();
@@ -542,6 +562,7 @@ $(document).ready(function () {
             var cipherSelected = document.getElementById('cipherSelect').value;
 
             if (cipherSelected == 'caesar' || cipherSelected == 'substitution' || cipherSelected == 'rot13') {
+                loader();
                 // Display plain message text
                 displayMessage.innerHTML = encryptCeasar(document.getElementById('enText').value, parseInt(document.getElementById('subSelect').value));
 

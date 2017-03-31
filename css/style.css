@@ -69,11 +69,11 @@ body {
 }
 
 .is-loading {
-    opacity: 0;
+    /*opacity: 0;*/
 }
 
 .progress.is-small {
-    opacity: 0;
+    /*opacity: 0;*/
     height: 3px !important;
 }
 
@@ -154,14 +154,13 @@ body {
 }
 
 #encryptMessage:hover {
-    background-color: transparent;
-    color: #3273dc;
-    border-bottom: 3px solid #dc060d;
-    -webkit-transition: background-color .25s ease-in-out;
-    -moz-transition: background-color .25s ease-in-out;
-    -ms-transition: background-color .25s ease-in-out;
-    -o-transition: background-color .25s ease-in-out;
-    transition: background-color .25s ease-in-out;
+    background-color: #2159a0;
+    color: #fffdfe;
+    -webkit-transition: background-color .25s ease;
+    -moz-transition: background-color .25s ease;
+    -ms-transition: background-color .25s ease;
+    -o-transition: background-color .25s ease;
+    transition: background-color .25s ease;
 }
 
 #clearCancel {
@@ -170,4 +169,17 @@ body {
 
 .fa-arrows-h {
     margin: 7px;
+}
+
+.progress::-webkit-progress-bar {
+    background-color: #db3127;
+}
+
+.progress {
+    display: none;
+    /*-webkit-transition: display 0.2s ease;*/
+    /*-moz-transition: display 0.2s ease;*/
+    /*-ms-transition: display 0.2s ease;*/
+    /*-o-transition: display 0.2s ease;*/
+    /*transition: display 0.2s ease;*/
 }
