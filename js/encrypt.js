@@ -16,66 +16,39 @@ function encryptCeasar(text, rot, encryptordecrypt) {
     return encryptedMessage.join('');
 }
 
-function rotateCharacter(char, rot, encryptdecrypt) {
-    // TODO: Fix issue with decrypt - values are getting lost
-    // Must check to see if encrypt or decrypt
-    // then check the rotation key and determine the range
+function rotateCharacter(char, rot, encrypt) {
 
     // Alphabet position based on 0-25 (26 characters)
     var c = alphabetPosition(char);
 
     if (char == char.toUpperCase()) {
         // if encrypt than add rotation
-        if (encryptdecrypt == true) {
+        if (encrypt == true) {
             return String.fromCharCode(((c + rot) % 26) + 65);
         } else {
-            return String.fromCharCode(((c - rot) % 26) + 65);
+            if (rot == rot && c <= (rot - 1)) {
+                return String.fromCharCode(((c - rot) % 26) + 65 + 26);
+            }
+            else {
+                return String.fromCharCode(((c - rot) % 26) + 65);
+            }
+
         }
 
     }
     else if (char == char.toLowerCase()) {
-        if (encryptdecrypt == true) {
+        if (encrypt == true) {
             return String.fromCharCode(((c + rot) % 26) + 97);
         } else {
-            if (rot == 1 && c == 0) {
+            if (rot == rot && c <= (rot - 1)) {
                 return String.fromCharCode(((c - rot) % 26) + 97 + 26);
             }
-            else if (rot == 2 && c <= 1) {
-                return String.fromCharCode(((c - rot) % 26) + 97 + 26);
-            }
-            else if (rot == 3 && c <= 2) {
-                return String.fromCharCode(((c - rot) % 26) + 97 + 26);
-            }
-            else if (rot == 4 && c <= 3) {
-                return String.fromCharCode(((c - rot) % 26) + 97 + 26);
-            }
-            else if (rot == 5 && c <= 4) {
-                return String.fromCharCode(((c - rot) % 26) + 97 + 26);
-            }
-            else if (rot == 6 && c <= 5) {
-                return String.fromCharCode(((c - rot) % 26) + 97 + 26);
-            }
-            else if (rot == 7 && c <= 6) {
-                return String.fromCharCode(((c - rot) % 26) + 97 + 26);
-            }
-            else if (rot == 8 && c <= 7) {
-                return String.fromCharCode(((c - rot) % 26) + 97 + 26);
-            }
-            else if (rot == 9 && c <= 8) {
-                return String.fromCharCode(((c - rot) % 26) + 97 + 26);
-            }
-            else if (rot == 10 && c <= 9) {
-                return String.fromCharCode(((c - rot) % 26) + 97 + 26);
-            }
-            else if (rot == 11 && c <= 10) {
-                return String.fromCharCode(((c - rot) % 26) + 97 + 26);
-            }
-            else if (rot == 12 && c <= 11) {
-                return String.fromCharCode(((c - rot) % 26) + 97 + 26);
-            }
-            else if (rot == 13 && c <= 12) {
-                return String.fromCharCode(((c - rot) % 26) + 97 + 26);
-            }
+            // if (rot == 1 && c == 0) {
+            //     return String.fromCharCode(((c - rot) % 26) + 97 + 26);
+            // }
+            // else if (rot == 2 && c <= 1) {
+            //     return String.fromCharCode(((c - rot) % 26) + 97 + 26);
+            // }
 
             else {
                 return String.fromCharCode(((c - rot) % 26) + 97);
@@ -199,3 +172,95 @@ console.log("key 13");
 console.log(encryptCeasar("abcdefghijklmnopqrstuvwxyz", 13, true));
 console.log("Decrypting....");
 console.log(encryptCeasar("nopqrstuvwxyzabcdefghijklm", 13, false));
+
+console.log("");console.log("");console.log("");console.log("");console.log("");console.log("");
+
+console.log("key 1");
+console.log(encryptCeasar("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 1, true));
+console.log("Decrypting....");
+console.log(encryptCeasar("BCDEFGHIJKLMNOPQRSTUVWXYZA", 1, false));
+
+console.log("");
+
+console.log("key 2");
+console.log(encryptCeasar("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 2, true));
+console.log("Decrypting....");
+console.log(encryptCeasar("CDEFGHIJKLMNOPQRSTUVWXYZAB", 2, false));
+
+console.log("");
+
+console.log("key 3");
+console.log(encryptCeasar("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 3, true));
+console.log("Decrypting....");
+console.log(encryptCeasar("DEFGHIJKLMNOPQRSTUVWXYZABC", 3, false));
+
+console.log("");
+
+console.log("key 4");
+console.log(encryptCeasar("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 4, true));
+console.log("Decrypting....");
+console.log(encryptCeasar("EFGHIJKLMNOPQRSTUVWXYZABCD", 4, false));
+
+console.log("");
+
+console.log("key 5");
+console.log(encryptCeasar("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 5, true));
+console.log("Decrypting....");
+console.log(encryptCeasar("FGHIJKLMNOPQRSTUVWXYZABCDE", 5, false));
+
+console.log("");
+
+console.log("key 6");
+console.log(encryptCeasar("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 6, true));
+console.log("Decrypting....");
+console.log(encryptCeasar("GHIJKLMNOPQRSTUVWXYZABCDEF", 6, false));
+
+
+console.log("");
+
+console.log("key 7");
+console.log(encryptCeasar("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 7, true));
+console.log("Decrypting....");
+console.log(encryptCeasar("HIJKLMNOPQRSTUVWXYZABCDEFG", 7, false));
+
+console.log("");
+
+console.log("key 8");
+console.log(encryptCeasar("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 8, true));
+console.log("Decrypting....");
+console.log(encryptCeasar("IJKLMNOPQRSTUVWXYZABCDEFGH", 8, false));
+
+console.log("");
+
+console.log("key 9");
+console.log(encryptCeasar("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 9, true));
+console.log("Decrypting....");
+console.log(encryptCeasar("JKLMNOPQRSTUVWXYZABCDEFGHI", 9, false));
+
+console.log("");
+
+console.log("key 10");
+console.log(encryptCeasar("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 10, true));
+console.log("Decrypting....");
+console.log(encryptCeasar("KLMNOPQRSTUVWXYZABCDEFGHIJ", 10, false));
+
+console.log("");
+
+console.log("key 11");
+console.log(encryptCeasar("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 11, true));
+console.log("Decrypting....");
+console.log(encryptCeasar("LMNOPQRSTUVWXYZABCDEFGHIJK", 11, false));
+
+console.log("");
+
+console.log("key 12");
+console.log(encryptCeasar("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 12, true));
+console.log("Decrypting....");
+console.log(encryptCeasar("MNOPQRSTUVWXYZABCDEFGHIJKL", 12, false));
+
+console.log("");
+
+console.log("key 13");
+console.log(encryptCeasar("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 13, true));
+console.log("Decrypting....");
+console.log(encryptCeasar("NOPQRSTUVWXYZABCDEFGHIJKLM", 13, false));
