@@ -154,6 +154,16 @@ body {
 }
 
 #encryptMessage:hover {
+    background-color: #009e87;
+    color: #fffdfe;
+    -webkit-transition: background-color .25s ease;
+    -moz-transition: background-color .25s ease;
+    -ms-transition: background-color .25s ease;
+    -o-transition: background-color .25s ease;
+    transition: background-color .25s ease;
+}
+
+#decryptMessage:hover {
     background-color: #2159a0;
     color: #fffdfe;
     -webkit-transition: background-color .25s ease;
