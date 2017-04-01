@@ -187,9 +187,8 @@ body {
 
 .progress {
     display: none;
-    /*-webkit-transition: display 0.2s ease;*/
-    /*-moz-transition: display 0.2s ease;*/
-    /*-ms-transition: display 0.2s ease;*/
-    /*-o-transition: display 0.2s ease;*/
-    /*transition: display 0.2s ease;*/
+}
+
+#vigenere-input {
+    display: none;
 }
