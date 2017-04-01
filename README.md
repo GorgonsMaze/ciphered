@@ -9,13 +9,14 @@ Ciphered is a OS project that encrypts/decrypts messages using codes or substitu
 ## Work In Progress
 * Types of Ciphers / History
 * Updating Content
-* Validating User Input
-* Displaying Encrypt/Decrypted messages
+* Validating User Input (Vigenere input fields)
+* Vigenere decrypt
+* Encrypt animation/display 
 
 
 # How To Contribute
- ... coming soon
-
+Anyone is welcome to submit a Pull Request.
+[PR Guide](https://help.github.com/articles/creating-a-pull-request/)
 
 # Clone
 1. On main page of repository click **Clone or Download** button 

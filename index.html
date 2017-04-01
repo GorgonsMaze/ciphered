@@ -118,27 +118,34 @@
                 </p>
             </div>
             <div class="column is-half">
+                <div id="vigenere-input">
+                    <label class="label">Vigenere Key</label>
+                    <p class="control">
+                        <!-- TODO: Get input value for vigenere key -->
+                        <input class="input" type="text" placeholder="Text input">
+                    </p>
+                </div>
                 <div id="key-col">
                     <label class="label">Substitution Key</label>
                     <p class="control">
-  <span class="select">
-    <select class="subselect" id="subSelect">
-        <option value="none" disabled selected>Choose subtitution</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-        <option value="11">11</option>
-        <option value="12">12</option>
-        <option value="13">13</option>
-    </select>
-  </span>
+                    <span class="select">
+                    <select class="subselect" id="subSelect">
+                    <option value="none" disabled selected>Choose subtitution</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    </select>
+                    </span>
                     </p>
                 </div>
             </div>
@@ -153,15 +160,13 @@
         </p>
 
 
-
         <div class="columns">
             <p class="control column is-half is-offset-3">
-                <!--<button class="button is-primary" id="encryptMessage"><i class="fa fa-lock" aria-hidden="true"></i>-->
-                <!--Encrypt-->
-                <!--</button>-->
-                <button class="button is-info is-info" id="encryptMessage"><i class="fa fa-lock" aria-hidden="true"></i>
-                    Encrypt <i class="fa fa-arrows-h" aria-hidden="true"></i> <i class="fa fa-unlock-alt"
-                                                                                 aria-hidden="true"></i>
+                <button class="button is-primary" id="encryptMessage"><i class="fa fa-lock" aria-hidden="true"></i>
+                    Encrypt
+                </button>
+                <button class="button is-info is-info" id="decryptMessage"><i class="fa fa-unlock-alt"
+                                                                              aria-hidden="true"></i>
                     Decrypt
                 </button>
                 <button class="button is-small" id="clearCancel">Cancel</button>
