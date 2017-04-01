@@ -34,6 +34,10 @@ function alphabetPosition(letter) {
  * @returns {string}
  */
 function rotateCharacter(char, rot, encryptdecrypt) {
+    // TODO: Fix issue with decrypt - values are getting lost
+    // Must check to see if encrypt or decrypt
+    // then check the rotation key and determine the range
+
     var c = alphabetPosition(char);
     if (char == char.toUpperCase()) {
         // if encrypt than add rotation
@@ -682,6 +686,7 @@ $(document).ready(function () {
     console.log("    |_|      \\___/  \\______)\\_____/|_|   |_|_______)_|   |_\\______)");
 
 
+    console.log(rot13("abcdefghijklkmnopqrstuvwxyz"));
     /*
      $.getJSON('http://my-api.com/json/', data => {
      $.each(data, (key, value) => {
