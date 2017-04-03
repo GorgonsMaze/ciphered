@@ -1,3 +1,7 @@
+/**
+TODO: Fix diplay issue of key dd and text input showing together
+ */
+
 body {
     font-family: 'Share Tech Mono', monospace !important;
 }
@@ -128,6 +132,7 @@ body {
 
 .fa-warning {
     visibility: hidden;
+    margin-top: 4px;
 }
 
 .s-warn {
@@ -136,12 +141,15 @@ body {
 
 }
 
-.t-warn {
-    margin-top: 4px;
-}
-
 .help {
     visibility: hidden;
+}
+
+span.v-help {
+    visibility: hidden;
+    font-size: 11px;
+    margin-top: 5px;
+    color: #ff3860;
 }
 
 .nav-left {
