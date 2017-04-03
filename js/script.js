@@ -82,6 +82,37 @@ function rotateCharacter(char, rot, encrypt) {
 
 }
 
+/**
+ * Method to rotate character for Vigenere cipher
+ *
+ * TODO Find issue in rotateCharacter() method to resolve both ciphers
+ *
+ * @param char
+ * @param rot
+ * @returns {string}
+ */
+function rotateCharacterVigenere(char, rot) {
+
+    // Alphabet position based on 0-25 (26 characters)
+    var c = alphabetPosition(char);
+
+    if (char == char.toUpperCase()) {
+
+        return String.fromCharCode(((c + rot) % 26) + 65);
+
+    }
+    else if (char == char.toLowerCase()) {
+
+        return String.fromCharCode(((c + rot) % 26) + 97);
+
+    }
+    else {
+        return String.fromCharCode(c);
+    }
+
+}
+
+
 
 
 /**
@@ -118,11 +149,11 @@ function encryptVigenere(text, key) {
     var keyString = text.replace(/[a-z]/gi, function (c) {
         return c == ' ' ? c : key[i++ % key.length]
     }); // ES5
-    // var keyString = text.replace(/[a-z]/gi, (a, b) => a == ' ' ? a : key[i++ % key.length]);
+     // var keyString = text.replace(/[a-z]/gi, (a, b) => a == ' ' ? a : key[i++ % key.length]);
 
     while (idx < text.length) {
         if (isAlpha(text[idx])) {
-            encryptedMessage.push(rotateCharacter(text[idx], alphabetPosition(keyString[idx])))
+            encryptedMessage.push(rotateCharacterVigenere(text[idx], alphabetPosition(keyString[idx])));
         }
         else {
             encryptedMessage.push(text[idx])
@@ -133,6 +164,8 @@ function encryptVigenere(text, key) {
     return encryptedMessage.join('');
 }
 
+console.log("The crow flies at midnight!");
+console.log(encryptVigenere("The crow flies at midnight!", "boom"));
 
 /* TODO : Add vigenere cipher decryption function */
 /**
@@ -592,7 +625,7 @@ $(document).ready(function () {
 
             } else if (cipherSelected == 'vigenere') {
                 // TODO : Pass vigenere dd value + string key (add input in index)
-                textDisplayMsg.innerHTML = encryptVigenere();
+                textDisplayMsg.value = encryptVigenere(document.getElementById('enText').value, document.getElementById('vigenereKey').value);
             }
 
             //Test the text
