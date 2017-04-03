@@ -1,5 +1,7 @@
 /** Created by ianarsenault on 11/9/16. */
 
+/** TODO Declare variables for whole script **/
+
 /***+++++++++++++++  WIP ++++++++++++++++++++**/
 /**
  * @param str
@@ -62,13 +64,6 @@ function rotateCharacter(char, rot, encrypt) {
             if (rot == rot && c <= (rot - 1)) {
                 return String.fromCharCode(((c - rot) % 26) + 97 + 26);
             }
-            // if (rot == 1 && c == 0) {
-            //     return String.fromCharCode(((c - rot) % 26) + 97 + 26);
-            // }
-            // else if (rot == 2 && c <= 1) {
-            //     return String.fromCharCode(((c - rot) % 26) + 97 + 26);
-            // }
-
             else {
                 return String.fromCharCode(((c - rot) % 26) + 97);
             }
@@ -344,7 +339,8 @@ function keyBlock() {
         $('.h-select').css("visibility", "hidden");
         $('.fa-warning').css('visibility', 'hidden');
 
-        $('#key-col').show('slow');
+        // $('#key-col').attr('style', 'display: block!important');
+
         $('#plain-key-title').html("Substitution Key:");
         $('#cipher-key-title').html("Ciphertext:");
 
@@ -361,6 +357,8 @@ function keyBlock() {
         if (value == "caesar") {
             $('#vigenere-input').hide('fast');
 
+            $('#key-col').show('slow');
+
             $('#subSelect').val('3').prop('selected', true);
 
             plainkey.append('Plaintext');
@@ -372,6 +370,8 @@ function keyBlock() {
         }
         else if (value === "rot13") {
             $('#vigenere-input').hide('fast');
+
+            $('#key-col').show('slow');
 
             $('#subSelect').val('13').prop('selected', true);
 
@@ -385,6 +385,8 @@ function keyBlock() {
         else if (value === "substitution") {
             $('#vigenere-input').hide('fast');
 
+            $('#key-col').show('slow');
+
             $('#subSelect').val(randSub).prop('selected', true)
 
             plainkey.append('Plaintext');
@@ -396,9 +398,13 @@ function keyBlock() {
         }
         else if (value === "vigenere") {
             $('#key-col').hide('fast');
+
             $('#vigenere-input').show('slow');
+
             document.getElementById('vigenereKey').value = "";
+
             $('#vigenereKey').removeClass('is-danger');
+
             // vigenere text warning
             $('.v-text').css('visibility', 'hidden');
             // icon warning
@@ -495,10 +501,6 @@ function loader() {
 }
 
 $(document).ready(function () {
-
-    // Hide the Sub Key Drop Down until cipher is selected
-    $('#key-col').hide();
-
 
     setTimeout(function () {
         typeOut();
@@ -660,7 +662,6 @@ $(document).ready(function () {
 
 
 
-
     $('#decryptMessage').on('click', function () {
         var encrypt = false;
 
@@ -723,7 +724,6 @@ $(document).ready(function () {
 
 
 
-
     // On cancel click - clear all selected elements + textarea
     $('#clearCancel').on('click', function () {
         $('#subSelect').val('none');
@@ -732,6 +732,7 @@ $(document).ready(function () {
         $('#msgdisplay').val(''); // clear the encrypted/decrypt message display field
         $('#vigenereKey').val('');
     });
+
 
     console.log("PVCURERQ!!!!!!!");
     console.log("    ______ _     _ _______ _     _ ______  _______ ______ _______");
@@ -742,7 +743,6 @@ $(document).ready(function () {
     console.log("    |_|      \\___/  \\______)\\_____/|_|   |_|_______)_|   |_\\______)");
 
 
-    console.log(rot13("abcdefghijklkmnopqrstuvwxyz"));
     /*
      $.getJSON('http://my-api.com/json/', data => {
      $.each(data, (key, value) => {
