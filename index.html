@@ -122,7 +122,8 @@
                     <label class="label">Vigenere Key</label>
                     <p class="control">
                         <!-- TODO: Get input value for vigenere key -->
-                        <input class="input" type="text" placeholder="Text input">
+                        <input class="input" id="vigenereKey" type="text" placeholder="Ex: &quot;Boom&quot;">
+                        <span class="v-help v-text">You must enter a key <i class="fa fa-warning v-warn"></i></span>
                     </p>
                 </div>
                 <div id="key-col">
@@ -175,7 +176,7 @@
 
         <progress class="progress is-small" id="progbar"></progress>
         <p class="control is-loading">
-            <textarea class="textarea" placeholder="Encrypting message..."></textarea>
+            <textarea class="textarea" id="msgdisplay" placeholder="Cipher will display here..."></textarea>
         </p>
         <div id="response"></div>
     </div>

@@ -82,6 +82,37 @@ function rotateCharacter(char, rot, encrypt) {
 
 }
 
+/**
+ * Method to rotate character for Vigenere cipher
+ *
+ * TODO Find issue in rotateCharacter() method to resolve both ciphers
+ *
+ * @param char
+ * @param rot
+ * @returns {string}
+ */
+function rotateCharacterVigenere(char, rot) {
+
+    // Alphabet position based on 0-25 (26 characters)
+    var c = alphabetPosition(char);
+
+    if (char == char.toUpperCase()) {
+
+        return String.fromCharCode(((c + rot) % 26) + 65);
+
+    }
+    else if (char == char.toLowerCase()) {
+
+        return String.fromCharCode(((c + rot) % 26) + 97);
+
+    }
+    else {
+        return String.fromCharCode(c);
+    }
+
+}
+
+
 
 
 /**
@@ -118,11 +149,11 @@ function encryptVigenere(text, key) {
     var keyString = text.replace(/[a-z]/gi, function (c) {
         return c == ' ' ? c : key[i++ % key.length]
     }); // ES5
-    // var keyString = text.replace(/[a-z]/gi, (a, b) => a == ' ' ? a : key[i++ % key.length]);
+     // var keyString = text.replace(/[a-z]/gi, (a, b) => a == ' ' ? a : key[i++ % key.length]);
 
     while (idx < text.length) {
         if (isAlpha(text[idx])) {
-            encryptedMessage.push(rotateCharacter(text[idx], alphabetPosition(keyString[idx])))
+            encryptedMessage.push(rotateCharacterVigenere(text[idx], alphabetPosition(keyString[idx])));
         }
         else {
             encryptedMessage.push(text[idx])
@@ -133,6 +164,8 @@ function encryptVigenere(text, key) {
     return encryptedMessage.join('');
 }
 
+console.log("The crow flies at midnight!");
+console.log(encryptVigenere("The crow flies at midnight!", "boom"));
 
 /* TODO : Add vigenere cipher decryption function */
 /**
@@ -148,52 +181,6 @@ function decryptVigenere(text, key) {
 
 /** end WIP **/
 
-
-/**
- * @param str
- * @returns {string}
- */
-function rot13(str) {
-
-    // Create empty array
-    var newArr = [];
-    // Split the string up into an array
-    var arr = str.split('');
-
-    // Loop through the array length
-    for (var i = 0; i < arr.length; i++) {
-        // Assign each char code of i to x
-        var x = arr[i].charCodeAt(0);
-
-        // If x >= 78 and <=90 or  x >= 110 and x <= 122
-        if (x >= 78 && x <= 90 || x >= 110 && x <= 122) {
-            // We subtract 13 from its unicode number
-            x = x - 13;
-            // Return string character
-            // and push into new array
-            newArr.push(String.fromCharCode(x));
-
-            // else if x > 64 and x < 78 or x > 96 and x < 110)
-        } else if (x > 64 && x < 78 || x > 96 && x < 110) {
-            // We add 13 from its unicode number
-            x = x + 13;
-            // Return string character
-            // and push into new array
-            newArr.push(String.fromCharCode(x));
-
-        } else {
-            // Return string character
-            // and push into new array
-            newArr.push(String.fromCharCode(x));
-        }
-
-    }
-
-    // Join elements in array as a string
-    // console.log(newArr.join(''));
-    return newArr.join('').toUpperCase();
-
-}
 
 /**
  * Method for modal windows
@@ -225,6 +212,7 @@ function modals() {
 
 }
 
+
 /**
  * Method to alert users with notifications
  */
@@ -241,6 +229,7 @@ function alerts() {
         $('#notify').addClass('fadeInLeft');
     });
 }
+
 
 /**
  * Method to mimic typing
@@ -315,6 +304,7 @@ function screenChange() {
     }
 }
 
+
 /**
  * TODO Validate key string
  *
@@ -358,7 +348,8 @@ function keyBlock() {
         $('#plain-key-title').html("Substitution Key:");
         $('#cipher-key-title').html("Ciphertext:");
 
-        $('#enText').val('');
+        // $('#enText').val(''); // PLaintext textarea
+        $('#msgdisplay').val(''); // Cipher textarea
         var value = $(this).val();
 
         $('.abc-cipher').text(''); // clear current text in cipher key block
@@ -406,6 +397,13 @@ function keyBlock() {
         else if (value === "vigenere") {
             $('#key-col').hide('fast');
             $('#vigenere-input').show('slow');
+            document.getElementById('vigenereKey').value = "";
+            $('#vigenereKey').removeClass('is-danger');
+            // vigenere text warning
+            $('.v-text').css('visibility', 'hidden');
+            // icon warning
+            $('.v-warn').css('visibility', 'hidden');
+
         }
 
     });
@@ -561,11 +559,24 @@ $(document).ready(function () {
         }
     });
 
+    $('#vigenereKey').keyup(function () {
+       if ($(this) > '0') {
+           $(this).removeClass('is-danger');
+           // vigenere text warning
+           $('.v-text').css('visibility', 'hidden');
+           // icon warning
+           $('.v-warn').css('visibility', 'hidden');
+       }
+    });
+
     // Text
     var s = document.getElementById('enText');
 
     // Display for encrypted/decrypted text
-    var displayMessage = document.getElementById('response');
+    // var displayMessage = document.getElementById('response');
+
+    // Textarea to display encrypted/decrypted message
+    var textDisplayMsg = document.getElementById('msgdisplay');
 
 
     $('#encryptMessage').on('click', function () {
@@ -580,6 +591,15 @@ $(document).ready(function () {
             $('.h-select').css("visibility", "visible");
             // Select DD icon warning
             $('.s-warn').css('visibility', 'visible');
+        }
+        else if (document.getElementById('cipherSelect').value === 'vigenere' && document.getElementById('vigenereKey').value.length <= 0) {
+            // vigenere input warning
+            $('.v-text').css('visibility', 'visible');
+            // icon warning
+            $('.v-warn').css('visibility', 'visible');
+            // Add danger class to input field
+            $('#vigenereKey').addClass('is-danger');
+
         }
         // Checks to make sure textarea has text
         else if (document.getElementById('enText').value < '0') {
@@ -600,11 +620,12 @@ $(document).ready(function () {
             if (cipherSelected == 'caesar' || cipherSelected == 'substitution' || cipherSelected == 'rot13') {
                 loader();
                 // Display plain message text
-                displayMessage.innerHTML = encryptCeasar(document.getElementById('enText').value, parseInt(document.getElementById('subSelect').value), encrypt);
+                // displayMessage.innerHTML = encryptCeasar(document.getElementById('enText').value, parseInt(document.getElementById('subSelect').value), encrypt);
+                textDisplayMsg.value = encryptCeasar(document.getElementById('enText').value, parseInt(document.getElementById('subSelect').value), encrypt);
 
             } else if (cipherSelected == 'vigenere') {
                 // TODO : Pass vigenere dd value + string key (add input in index)
-                displayMessage.innerHTML = encryptVigenere();
+                textDisplayMsg.value = encryptVigenere(document.getElementById('enText').value, document.getElementById('vigenereKey').value);
             }
 
             //Test the text
@@ -620,6 +641,16 @@ $(document).ready(function () {
             console.log(encryptCeasar(document.getElementById('enText').value, parseInt(document.getElementById('subSelect').value)));
 
         }
+
+        // if (document.getElementById('cipherSelect').value === 'vigenere' && document.getElementById('vigenereKey').value.length <= 0) {
+        //     // vigenere input warning
+        //     $('.v-text').css('visibility', 'visible');
+        //     // icon warning
+        //     $('.v-warn').css('visibility', 'visible');
+        //     // Add danger class to input field
+        //     $('#vigenereKey').addClass('is-danger');
+        //
+        // }
 
         // TODO: If user enters text before selecting a cipher, keep text in textarea rather than clear
         // TODO: Use counter to stop clearing of substitution rotation and cipher drop downs if user has not run program
@@ -662,7 +693,8 @@ $(document).ready(function () {
             if (cipherSelected == 'caesar' || cipherSelected == 'substitution' || cipherSelected == 'rot13') {
                 loader();
                 // Display plain message text
-                displayMessage.innerHTML = encryptCeasar(document.getElementById('enText').value, parseInt(document.getElementById('subSelect').value), encrypt);
+                // displayMessage.innerHTML = encryptCeasar(document.getElementById('enText').value, parseInt(document.getElementById('subSelect').value), encrypt);
+                textDisplayMsg.value = encryptCeasar(document.getElementById('enText').value, parseInt(document.getElementById('subSelect').value), encrypt);
 
             } else if (cipherSelected == 'vigenere') {
                 // TODO : Pass vigenere dd value + string key (add input in index)
@@ -697,6 +729,8 @@ $(document).ready(function () {
         $('#subSelect').val('none');
         $('#cipherSelect').val('none');
         $('#enText').val(''); // clear current text in cipher key block
+        $('#msgdisplay').val(''); // clear the encrypted/decrypt message display field
+        $('#vigenereKey').val('');
     });
 
     console.log("PVCURERQ!!!!!!!");
