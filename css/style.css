@@ -197,6 +197,9 @@ span.v-help {
     display: none;
 }
 
+#key-col {
+    display: none;
+}
 #vigenere-input {
     display: none;
 }
