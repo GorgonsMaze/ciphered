@@ -108,8 +108,6 @@ function rotateCharacterVigenere(char, rot) {
 }
 
 
-
-
 /**
  * Method to encrypt/decrypt substitution cipher
  * @param text
@@ -130,7 +128,6 @@ function encryptCeasar(text, rot, encryptordecrypt) {
 }
 
 
-
 /**
  * @param text
  * @param key
@@ -144,7 +141,7 @@ function encryptVigenere(text, key) {
     var keyString = text.replace(/[a-z]/gi, function (c) {
         return c == ' ' ? c : key[i++ % key.length]
     }); // ES5
-     // var keyString = text.replace(/[a-z]/gi, (a, b) => a == ' ' ? a : key[i++ % key.length]);
+    // var keyString = text.replace(/[a-z]/gi, (a, b) => a == ' ' ? a : key[i++ % key.length]);
 
     while (idx < text.length) {
         if (isAlpha(text[idx])) {
@@ -171,6 +168,29 @@ console.log(encryptVigenere("The crow flies at midnight!", "boom"));
  */
 function decryptVigenere(text, key) {
     var decryptedMessage = [];
+    var idx = 0;
+    var i = 0;
+
+    // Replace the encrypted string with the key string
+    var keyString = text.replace(/[a-z]/gi, function (c) {
+        return c == ' ' ? c : key[i++ % key.length]
+    }); // ES5
+
+    while (idx < text.length) {
+        if (isAlpha(text[idx])) {
+
+            // TODO: Fix rotate character function for vigenere decipher
+
+            decryptedMessage.push(rotateCharacterVigenere(text[idx], alphabetPosition(keyString[idx])));
+
+        }
+        else {
+            decryptedMessage.push(text[idx])
+        }
+
+        idx++;
+    }
+
     return decryptedMessage.join('');
 }
 
@@ -488,6 +508,7 @@ function loader() {
 
     var width = 10;
     var id = setInterval(frame, 1);
+
     function frame() {
         if (width >= 100) {
             clearInterval(id);
@@ -562,13 +583,13 @@ $(document).ready(function () {
     });
 
     $('#vigenereKey').keyup(function () {
-       if ($(this) > '0') {
-           $(this).removeClass('is-danger');
-           // vigenere text warning
-           $('.v-text').css('visibility', 'hidden');
-           // icon warning
-           $('.v-warn').css('visibility', 'hidden');
-       }
+        if ($(this) > '0') {
+            $(this).removeClass('is-danger');
+            // vigenere text warning
+            $('.v-text').css('visibility', 'hidden');
+            // icon warning
+            $('.v-warn').css('visibility', 'hidden');
+        }
     });
 
     // Text
@@ -661,7 +682,6 @@ $(document).ready(function () {
     });
 
 
-
     $('#decryptMessage').on('click', function () {
         var encrypt = false;
 
@@ -721,7 +741,6 @@ $(document).ready(function () {
 
 
     });
-
 
 
     // On cancel click - clear all selected elements + textarea
