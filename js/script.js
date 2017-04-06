@@ -371,7 +371,10 @@ function keyBlock() {
         $('.abc-cipher').text(''); // clear current text in cipher key block
 
 
-        var subArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+        var sub1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+        var sub2 = [14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25];
+        var subArray = sub1.concat(sub2);
+
         var randSub = subArray[Math.floor(Math.random() * subArray.length)];
 
         if (value == "caesar") {
@@ -521,7 +524,31 @@ function loader() {
 
 }
 
+
+function createDropDown() {
+    var openOption = '<option';
+    var valueOpen = ' value="';
+    var valueClose = '">';
+    var closeOption = '</option>';
+    var optionList1 = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"];
+    var optionList2 = ["14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25"];
+
+    var options = optionList1.concat(optionList2);
+
+    $('#subSelect').each(function () {
+        for (key in options) {
+            if (options.hasOwnProperty(key)) {
+                $(this).append(openOption + valueOpen + options[key] + valueClose + options[key] + closeOption);
+            }
+        }
+    });
+}
+
+
 $(document).ready(function () {
+
+    // Dynamically creates select dd options
+    createDropDown();
 
     setTimeout(function () {
         typeOut();
@@ -542,32 +569,6 @@ $(document).ready(function () {
     $('#enText').on('focus', function () {
         $('#notify').addClass('flash');
     });
-
-    // if (document.getElementById('cipherSelect').value == 'caesar') {
-    //
-    //     $('#encryptMessage').on('click', function () {
-    //         var txt = document.getElementById('enText');
-    //         if (txt.value.length >= 1) {
-    //             var plaintext = $('#enText').val();
-    //             // alert(plaintext);
-    //             var ciphertext = rot13(plaintext);
-    //
-    //             // alert(ciphertext);
-    //             document.getElementById('response').innerHTML = ciphertext;
-    //             // Clear input field
-    //             // $('#enText').val('');
-    //
-    //
-    //             // $('.is-loading').css('opacity', 1);
-    //             // $('.progress').css('opacity', 1);
-    //         }
-    //
-    //     });
-    // } else {
-    //     $('#encryptMessage').on('click', function () {
-    //
-    //     });
-    // }
 
 
     // in text area - on change validate whether anything has been entered by the user
