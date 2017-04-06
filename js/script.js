@@ -108,8 +108,6 @@ function rotateCharacterVigenere(char, rot) {
 }
 
 
-
-
 /**
  * Method to encrypt/decrypt substitution cipher
  * @param text
@@ -130,7 +128,6 @@ function encryptCeasar(text, rot, encryptordecrypt) {
 }
 
 
-
 /**
  * @param text
  * @param key
@@ -144,7 +141,7 @@ function encryptVigenere(text, key) {
     var keyString = text.replace(/[a-z]/gi, function (c) {
         return c == ' ' ? c : key[i++ % key.length]
     }); // ES5
-     // var keyString = text.replace(/[a-z]/gi, (a, b) => a == ' ' ? a : key[i++ % key.length]);
+    // var keyString = text.replace(/[a-z]/gi, (a, b) => a == ' ' ? a : key[i++ % key.length]);
 
     while (idx < text.length) {
         if (isAlpha(text[idx])) {
@@ -171,6 +168,29 @@ console.log(encryptVigenere("The crow flies at midnight!", "boom"));
  */
 function decryptVigenere(text, key) {
     var decryptedMessage = [];
+    var idx = 0;
+    var i = 0;
+
+    // Replace the encrypted string with the key string
+    var keyString = text.replace(/[a-z]/gi, function (c) {
+        return c == ' ' ? c : key[i++ % key.length]
+    }); // ES5
+
+    while (idx < text.length) {
+        if (isAlpha(text[idx])) {
+
+            // TODO: Fix rotate character function for vigenere decipher
+
+            decryptedMessage.push(rotateCharacterVigenere(text[idx], alphabetPosition(keyString[idx])));
+
+        }
+        else {
+            decryptedMessage.push(text[idx])
+        }
+
+        idx++;
+    }
+
     return decryptedMessage.join('');
 }
 
@@ -351,7 +371,10 @@ function keyBlock() {
         $('.abc-cipher').text(''); // clear current text in cipher key block
 
 
-        var subArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+        var sub1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+        var sub2 = [14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25];
+        var subArray = sub1.concat(sub2);
+
         var randSub = subArray[Math.floor(Math.random() * subArray.length)];
 
         if (value == "caesar") {
@@ -488,6 +511,7 @@ function loader() {
 
     var width = 10;
     var id = setInterval(frame, 1);
+
     function frame() {
         if (width >= 100) {
             clearInterval(id);
@@ -500,7 +524,31 @@ function loader() {
 
 }
 
+
+function createDropDown() {
+    var openOption = '<option';
+    var valueOpen = ' value="';
+    var valueClose = '">';
+    var closeOption = '</option>';
+    var optionList1 = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"];
+    var optionList2 = ["14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25"];
+
+    var options = optionList1.concat(optionList2);
+
+    $('#subSelect').each(function () {
+        for (key in options) {
+            if (options.hasOwnProperty(key)) {
+                $(this).append(openOption + valueOpen + options[key] + valueClose + options[key] + closeOption);
+            }
+        }
+    });
+}
+
+
 $(document).ready(function () {
+
+    // Dynamically creates select dd options
+    createDropDown();
 
     setTimeout(function () {
         typeOut();
@@ -522,32 +570,6 @@ $(document).ready(function () {
         $('#notify').addClass('flash');
     });
 
-    // if (document.getElementById('cipherSelect').value == 'caesar') {
-    //
-    //     $('#encryptMessage').on('click', function () {
-    //         var txt = document.getElementById('enText');
-    //         if (txt.value.length >= 1) {
-    //             var plaintext = $('#enText').val();
-    //             // alert(plaintext);
-    //             var ciphertext = rot13(plaintext);
-    //
-    //             // alert(ciphertext);
-    //             document.getElementById('response').innerHTML = ciphertext;
-    //             // Clear input field
-    //             // $('#enText').val('');
-    //
-    //
-    //             // $('.is-loading').css('opacity', 1);
-    //             // $('.progress').css('opacity', 1);
-    //         }
-    //
-    //     });
-    // } else {
-    //     $('#encryptMessage').on('click', function () {
-    //
-    //     });
-    // }
-
 
     // in text area - on change validate whether anything has been entered by the user
     $('#enText').keyup(function () {
@@ -562,13 +584,13 @@ $(document).ready(function () {
     });
 
     $('#vigenereKey').keyup(function () {
-       if ($(this) > '0') {
-           $(this).removeClass('is-danger');
-           // vigenere text warning
-           $('.v-text').css('visibility', 'hidden');
-           // icon warning
-           $('.v-warn').css('visibility', 'hidden');
-       }
+        if ($(this) > '0') {
+            $(this).removeClass('is-danger');
+            // vigenere text warning
+            $('.v-text').css('visibility', 'hidden');
+            // icon warning
+            $('.v-warn').css('visibility', 'hidden');
+        }
     });
 
     // Text
@@ -661,7 +683,6 @@ $(document).ready(function () {
     });
 
 
-
     $('#decryptMessage').on('click', function () {
         var encrypt = false;
 
@@ -721,7 +742,6 @@ $(document).ready(function () {
 
 
     });
-
 
 
     // On cancel click - clear all selected elements + textarea
