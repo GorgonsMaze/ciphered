@@ -495,31 +495,27 @@ function keyBlock() {
         $('.abc-cipher').text(''); // clear current text in cipher key block
         $('#cipher-key-title').html("Ciphertext:");
 
-
         clearTimeout(timer);
         timer = setTimeout(function () {
             if (currentVal != previousVal) {
                 console.log(currentVal);
 
-
-
                 cipherkey.append('Vigenere Cipher / Key-' + currentVal);
 
                 c = vigKeyBlock(abcplain, currentVal);
-                //console.log(keyChange(abcplain, currentVal));
+
                 $('.abc-cipher').append(c);
             }
-        }, 2000);
+        }, 500);
 
     });
-
-   // $('#vigenereKey').keyup($.debounce(checkVigInput, 500));
-
 
 }
 
 
 /**
+ * Method to change the key display for  Substitution
+ *
  * @param abc
  * @param idx
  * @returns {string}
@@ -532,13 +528,13 @@ function keyChange(abc, idx) {
 
 
 /**
+ * Method to change the key display for vigenere
  *
  * @param abc
  * @param vigKey
  * @returns {string}
  */
 function vigKeyBlock(abc, vigKey) {
-    console.log(abc);
     var idx = 0;
     var i = 0;
     var keyblock = [];
@@ -555,7 +551,6 @@ function vigKeyBlock(abc, vigKey) {
         idx++;
 
     }
-
 
     // keyblock type is object - set to string
     var newKey = String(keyblock);
