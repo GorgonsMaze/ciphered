@@ -17,7 +17,8 @@ Ciphered is a OS project that encrypts/decrypts messages using codes or substitu
 # How To Contribute
 Anyone is welcome to submit a Pull Request.
 [PR Guide](https://help.github.com/articles/creating-a-pull-request/)
-Please check Projects section on Github  to see what features need help
+
+* Please check Projects section on Github  to see what features are being worked on / need help
 
 
 # Clone

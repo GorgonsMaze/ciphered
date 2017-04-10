@@ -349,6 +349,8 @@ function keyBlock() {
     var plainkey = document.getElementById('plain-key-title');
     var cipherkey = document.getElementById('cipher-key-title');
 
+    //var vigKey = document.getElementById('vigenereKey');
+
     var c = ''; // variable to hold return cipher key
 
 
@@ -426,6 +428,8 @@ function keyBlock() {
 
             document.getElementById('vigenereKey').value = "";
 
+            plainkey.append('Plaintext');
+
             $('#vigenereKey').removeClass('is-danger');
 
             // vigenere text warning
@@ -484,21 +488,77 @@ function keyBlock() {
         }
     });
 
+    var timer;
+    var previousVal = $('#vigenereKey').val();
+    $('#vigenereKey').keyup(function() {
+        var currentVal = $(this).val();
+        $('.abc-cipher').text(''); // clear current text in cipher key block
+        $('#cipher-key-title').html("Ciphertext:");
+
+        clearTimeout(timer);
+        timer = setTimeout(function () {
+            if (currentVal != previousVal) {
+                console.log(currentVal);
+
+                cipherkey.append('Vigenere Cipher / Key-' + currentVal);
+
+                c = vigKeyBlock(abcplain, currentVal);
+
+                $('.abc-cipher').append(c);
+            }
+        }, 500);
+
+    });
+
 }
 
 
 /**
+ * Method to change the key display for  Substitution
+ *
  * @param abc
  * @param idx
  * @returns {string}
  */
 function keyChange(abc, idx) {
-    // var idx = abc.search(char);
-
     var answer = abc.slice(idx) + abc.slice(0, idx);
+    console.log(answer.split('').join(' '));
     return answer.split('').join(' ');
+}
+
+
+/**
+ * Method to change the key display for vigenere
+ *
+ * @param abc
+ * @param vigKey
+ * @returns {string}
+ */
+function vigKeyBlock(abc, vigKey) {
+    var idx = 0;
+    var i = 0;
+    var keyblock = [];
+
+    vigKey = vigKey.toUpperCase();
+
+    var keyString = abc.replace(/[a-z]/gi, function (c) {
+        return c == ' ' ? c : vigKey[i++ % vigKey.length]
+    }); // ES5
+
+
+    while (idx < abc.length) {
+        keyblock.push(keyString[idx])
+        idx++;
+
+    }
+
+    // keyblock type is object - set to string
+    var newKey = String(keyblock);
+
+    return newKey.split('').join('').replace(/,/g, ' ');
 
 }
+
 
 /**
  * Method for progress bar animation
