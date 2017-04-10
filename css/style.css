@@ -203,3 +203,34 @@ span.v-help {
 #vigenere-input {
     display: none;
 }
+
+
+@media screen and (min-width: 1671px) {
+    .column.is-wide-half {
+        -webkit-box-flex: 0 !important;
+        -ms-flex: none!important;
+        flex: none!important;
+        width: 50% !important;
+    }
+
+    .column.is-offset-one-quarter-widescreen {
+        margin-left: 25% !important;
+    }
+}
+
+
+@media screen and (min-width: 1000px) and (max-width: 1670px) {
+    .column.is-offset-1-desktop {
+        margin-left: 8.33333% !important;
+    }
+
+    .column.is-10-desktop {
+        -webkit-box-flex: 0;
+        -ms-flex: none;
+        flex: none;
+        width: 83.33333% !important;
+    }
+}
+
+
+/* TODO: Fix device size queries for key change display */
