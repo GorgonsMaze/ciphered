@@ -127,7 +127,7 @@ function encryptCeasar(text, rot, encryptordecrypt) {
     return encryptedMessage.join('');
 }
 
-
+// TODO Allow user to enter multiple words as key - get rid of white space but fix they key generator
 /**
  * @param text
  * @param key
@@ -137,6 +137,7 @@ function encryptVigenere(text, key) {
     var encryptedMessage = [];
     var idx = 0;
     var i = 0;
+
     // var keyString = text.replace(/[a-z]/gi, c => key[i++ % key.length]);  ES6
     var keyString = text.replace(/[a-z]/gi, function (c) {
         return c == ' ' ? c : key[i++ % key.length]
@@ -498,10 +499,9 @@ function keyBlock() {
         clearTimeout(timer);
         timer = setTimeout(function () {
             if (currentVal != previousVal) {
-                console.log(currentVal);
-
                 cipherkey.append('Vigenere Cipher / Key-' + currentVal);
 
+                currentVal = currentVal.replace(/\s/g, ''); // remove white space to allow multiple words
                 c = vigKeyBlock(abcplain, currentVal);
 
                 $('.abc-cipher').append(c);
@@ -512,6 +512,7 @@ function keyBlock() {
 
 }
 
+// TODO: Fix vigenere key display from "ABCDEF" to actual beginning of user entered string - up to 24 characters ...
 
 /**
  * Method to change the key display for  Substitution
@@ -541,8 +542,10 @@ function vigKeyBlock(abc, vigKey) {
 
     vigKey = vigKey.toUpperCase();
 
+    console.log(vigKey);
+
     var keyString = abc.replace(/[a-z]/gi, function (c) {
-        return c == ' ' ? c : vigKey[i++ % vigKey.length]
+        return c == '' ? c : vigKey[i++ % vigKey.length]
     }); // ES5
 
 
@@ -709,7 +712,10 @@ $(document).ready(function () {
 
             } else if (cipherSelected == 'vigenere') {
                 // TODO : Pass vigenere dd value + string key (add input in index)
-                textDisplayMsg.value = encryptVigenere(document.getElementById('enText').value, document.getElementById('vigenereKey').value);
+                var vkey = document.getElementById('vigenereKey').value;
+                vkey = vkey.replace(/\s/g, '');
+
+                textDisplayMsg.value = encryptVigenere(document.getElementById('enText').value, vkey);
             }
 
             //Test the text
