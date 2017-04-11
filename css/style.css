@@ -233,4 +233,61 @@ span.v-help {
 }
 
 
+
+table tr:hover {
+    background-color: #f5ec9f!important;
+}
+table tr td:hover{
+    background-color: #ffcf9a !important;
+}
+
+table tr td:first-child:hover {
+    background-color: #f5ec9f !important;
+}
+
+.center-table th {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.center-table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+.table {
+    overflow: hidden!important;
+    z-index: 1;
+}
+
+.table td,
+.table th {
+    position: relative!important;
+}
+
+td:hover::before,
+.tablerow:hover::before {
+    background-color: #ffa;
+    content: '\00a0';
+    height: 100%;
+    left: -5000px;
+    position: absolute;
+    top: 0;
+    width: 10000px;
+    z-index: -1;
+}
+
+td:hover::after,
+.clmn:hover::after{
+    background-color: #ffa;
+    content: '\00a0';
+    height: 10000px;
+    left: 0;
+    position: absolute;
+    top: -5000px;
+    width: 100%;
+    z-index: -1;
+
+}
 /* TODO: Fix device size queries for key change display */

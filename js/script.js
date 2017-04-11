@@ -1,6 +1,21 @@
 /** Created by ianarsenault on 11/9/16. */
 
 /** TODO Declare variables for whole script **/
+/** TODO function that will create vigenere cipher table */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /***+++++++++++++++  WIP ++++++++++++++++++++**/
 /**
@@ -835,5 +850,36 @@ $(document).ready(function () {
      console.log(key + ' => ' + value); });
      });
      */
+
+
+
+
+
+
+
+
+
+    // TODO: Add function to add hover class to columns in table
+
+    var col = table.getElementsByClassName('clmn');
+    var td = document.getElementsByTagName('td');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 });
