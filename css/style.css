@@ -152,6 +152,10 @@ span.v-help {
     color: #ff3860;
 }
 
+span.v-text-2 {
+    visibility: hidden;
+}
+
 .nav-left {
     margin-left: 8px;
 }
@@ -200,16 +204,16 @@ span.v-help {
 #key-col {
     display: none;
 }
+
 #vigenere-input {
     display: none;
 }
 
-
 @media screen and (min-width: 1671px) {
     .column.is-wide-half {
         -webkit-box-flex: 0 !important;
-        -ms-flex: none!important;
-        flex: none!important;
+        -ms-flex: none !important;
+        flex: none !important;
         width: 50% !important;
     }
 
@@ -217,7 +221,6 @@ span.v-help {
         margin-left: 25% !important;
     }
 }
-
 
 @media screen and (min-width: 1000px) and (max-width: 1670px) {
     .column.is-offset-1-desktop {
@@ -232,12 +235,11 @@ span.v-help {
     }
 }
 
-
-
 table tr:hover {
-    background-color: #f5ec9f!important;
+    background-color: #f5ec9f !important;
 }
-table tr td:hover{
+
+table tr td:hover {
     background-color: #ffcf9a !important;
 }
 
@@ -255,39 +257,39 @@ table tr td:first-child:hover {
     vertical-align: middle;
 }
 
-
-.table {
-    overflow: hidden!important;
-    z-index: 1;
+table {
+    overflow: hidden;
 }
 
-.table td,
-.table th {
-    position: relative!important;
+td, th {
+    padding: 2px;
+    position: relative;
 }
 
-td:hover::before,
-.tablerow:hover::before {
-    background-color: #ffa;
-    content: '\00a0';
-    height: 100%;
-    left: -5000px;
-    position: absolute;
-    top: 0;
-    width: 10000px;
-    z-index: -1;
+table tr td:hover {
+    background-color: #ffcf9a !important;
+}
+
+body:not(.nohover) tbody tr:hover {
+    background-color: #f5ec9f;
 }
 
 td:hover::after,
-.clmn:hover::after{
-    background-color: #ffa;
-    content: '\00a0';
+thead th:not(:empty):hover::after,
+td:focus::after,
+thead th:not(:empty):focus::after {
+    content: '';
     height: 10000px;
     left: 0;
     position: absolute;
     top: -5000px;
     width: 100%;
     z-index: -1;
-
 }
+
+td:hover::after,
+th:hover::after {
+    background-color: #f5ec9f;
+}
+
 /* TODO: Fix device size queries for key change display */

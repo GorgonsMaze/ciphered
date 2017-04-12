@@ -4,19 +4,6 @@
 /** TODO function that will create vigenere cipher table */
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 /***+++++++++++++++  WIP ++++++++++++++++++++**/
 /**
  * @param str
@@ -337,17 +324,6 @@ function screenChange() {
 
 
 /**
- * TODO Validate key string
- *
- * Method to check if key string entered has spaces - if so remove space
- */
-function vigenereValidation(str) {
-    return (/\s/.test(str));
-}
-
-console.log(vigenereValidation("Hel lo"));
-
-/**
  * TODO: Vigenere key block - rotation (string and rotation key)
  */
 
@@ -364,8 +340,6 @@ function keyBlock() {
 
     var plainkey = document.getElementById('plain-key-title');
     var cipherkey = document.getElementById('cipher-key-title');
-
-    //var vigKey = document.getElementById('vigenereKey');
 
     var c = ''; // variable to hold return cipher key
 
@@ -506,7 +480,7 @@ function keyBlock() {
 
     var timer;
     var previousVal = $('#vigenereKey').val();
-    $('#vigenereKey').keyup(function() {
+    $('#vigenereKey').keyup(function () {
         var currentVal = $(this).val();
         $('.abc-cipher').text(''); // clear current text in cipher key block
         $('#cipher-key-title').html("Ciphertext:");
@@ -603,6 +577,22 @@ function loader() {
 }
 
 
+/**
+ * Method to check if string is all letters
+ *
+ * @param str
+ * @returns {boolean}
+ */
+function allLetters(str) {
+    var letters = /^[A-Za-z]+$/g;
+    if (str.match(letters)) {
+        return true;
+    }
+}
+
+/**
+ * Method to create drop down of nums 1-25
+ */
 function createDropDown() {
     var openOption = '<option';
     var valueOpen = ' value="';
@@ -661,8 +651,9 @@ $(document).ready(function () {
         }
     });
 
+    // TODO On keyup if there are numbers still in input keep warning /error messages
     $('#vigenereKey').keyup(function () {
-        if ($(this) > '0') {
+        if ($(this) > '0' || ($(this) > '0' && allLetters($(this).val()))) {
             $(this).removeClass('is-danger');
             // vigenere text warning
             $('.v-text').css('visibility', 'hidden');
@@ -673,9 +664,6 @@ $(document).ready(function () {
 
     // Text
     var s = document.getElementById('enText');
-
-    // Display for encrypted/decrypted text
-    // var displayMessage = document.getElementById('response');
 
     // Textarea to display encrypted/decrypted message
     var textDisplayMsg = document.getElementById('msgdisplay');
@@ -695,6 +683,8 @@ $(document).ready(function () {
             $('.s-warn').css('visibility', 'visible');
         }
         else if (document.getElementById('cipherSelect').value === 'vigenere' && document.getElementById('vigenereKey').value.length <= 0) {
+            document.getElementById('v-err-text').innerHTML = "You must enter a key <i class='fa fa-warning v-warn'></i>";
+
             // vigenere input warning
             $('.v-text').css('visibility', 'visible');
             // icon warning
@@ -702,6 +692,17 @@ $(document).ready(function () {
             // Add danger class to input field
             $('#vigenereKey').addClass('is-danger');
 
+
+        } else if (document.getElementById('cipherSelect').value === 'vigenere' && document.getElementById('vigenereKey').value.length > 0 && !allLetters(document.getElementById('vigenereKey').value)) {
+            //alert("working");
+            document.getElementById('v-err-text').innerHTML = "You must enter only letters <i class='fa fa-warning v-warn'></i>";
+
+            // vigenere input warning
+            $('.v-text').css('visibility', 'visible');
+            // icon warning
+            $('.v-warn').css('visibility', 'visible');
+            // Add danger class to input field
+            $('#vigenereKey').addClass('is-danger');
         }
         // Checks to make sure textarea has text
         else if (document.getElementById('enText').value < '0') {
@@ -726,6 +727,7 @@ $(document).ready(function () {
                 textDisplayMsg.value = encryptCeasar(document.getElementById('enText').value, parseInt(document.getElementById('subSelect').value), encrypt);
 
             } else if (cipherSelected == 'vigenere') {
+                loader();
                 // TODO : Pass vigenere dd value + string key (add input in index)
                 var vkey = document.getElementById('vigenereKey').value;
                 vkey = vkey.replace(/\s/g, '');
@@ -835,7 +837,6 @@ $(document).ready(function () {
     });
 
 
-    console.log("PVCURERQ!!!!!!!");
     console.log("    ______ _     _ _______ _     _ ______  _______ ______ _______");
     console.log("    (_____ (_)   (_|_______|_)   (_|_____ \\(_______|_____ (_______)");
     console.log("    _____) )     _ _       _     _ _____) )_____   _____) )     _");
@@ -850,36 +851,6 @@ $(document).ready(function () {
      console.log(key + ' => ' + value); });
      });
      */
-
-
-
-
-
-
-
-
-
-    // TODO: Add function to add hover class to columns in table
-
-    var col = table.getElementsByClassName('clmn');
-    var td = document.getElementsByTagName('td');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 });
