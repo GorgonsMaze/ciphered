@@ -152,6 +152,10 @@ span.v-help {
     color: #ff3860;
 }
 
+span.v-text-2 {
+    visibility: hidden;
+}
+
 .nav-left {
     margin-left: 8px;
 }
@@ -200,16 +204,16 @@ span.v-help {
 #key-col {
     display: none;
 }
+
 #vigenere-input {
     display: none;
 }
 
-
 @media screen and (min-width: 1671px) {
     .column.is-wide-half {
         -webkit-box-flex: 0 !important;
-        -ms-flex: none!important;
-        flex: none!important;
+        -ms-flex: none !important;
+        flex: none !important;
         width: 50% !important;
     }
 
@@ -217,7 +221,6 @@ span.v-help {
         margin-left: 25% !important;
     }
 }
-
 
 @media screen and (min-width: 1000px) and (max-width: 1670px) {
     .column.is-offset-1-desktop {
@@ -232,5 +235,61 @@ span.v-help {
     }
 }
 
+table tr:hover {
+    background-color: #f5ec9f !important;
+}
+
+table tr td:hover {
+    background-color: #ffcf9a !important;
+}
+
+table tr td:first-child:hover {
+    background-color: #f5ec9f !important;
+}
+
+.center-table th {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.center-table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+table {
+    overflow: hidden;
+}
+
+td, th {
+    padding: 2px;
+    position: relative;
+}
+
+table tr td:hover {
+    background-color: #ffcf9a !important;
+}
+
+body:not(.nohover) tbody tr:hover {
+    background-color: #f5ec9f;
+}
+
+td:hover::after,
+thead th:not(:empty):hover::after,
+td:focus::after,
+thead th:not(:empty):focus::after {
+    content: '';
+    height: 10000px;
+    left: 0;
+    position: absolute;
+    top: -5000px;
+    width: 100%;
+    z-index: -1;
+}
+
+td:hover::after,
+th:hover::after {
+    background-color: #f5ec9f;
+}
 
 /* TODO: Fix device size queries for key change display */
