@@ -412,6 +412,9 @@ function keyBlock() {
 
         }
         else if (value === "vigenere") {
+            // Dynamically creates Vigenere table
+            makeTable();
+
             $('#key-col').hide('fast');
 
             $('#vigenere-input').show('slow');
@@ -680,9 +683,6 @@ $(document).ready(function () {
 
     // Dynamically creates select dd options
     createDropDown();
-
-    // Dynamically creates Vigenere table
-    makeTable();
 
     setTimeout(function () {
         typeOut();

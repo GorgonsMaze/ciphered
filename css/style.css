@@ -239,9 +239,9 @@ table tr:hover {
     background-color: #f5ec9f !important;
 }
 
-table tr td:hover {
-    background-color: #ffcf9a !important;
-}
+/*table tr td:hover {*/
+    /*background-color: #ffcf9a !important;*/
+/*}*/
 
 table tr td:first-child:hover {
     background-color: #f5ec9f !important;
@@ -266,12 +266,26 @@ td, th {
     position: relative;
 }
 
+table tr:first-child {
+    border-bottom: 2px solid #a4a4a4;
+    font-weight: 900 !important;
+}
+
+table tr td:nth-child(1) {
+    border-right: 2px solid #a4a4a4;
+    font-weight: 900 !important;
+    color: #000;
+}
+
 table tr td:hover {
-    background-color: #ffcf9a;
+    background-color: #ff5436;
+    color: #ffffff;
+    font-weight: 900 !important;;
 }
 
 body:not(.nohover) tbody tr:hover {
     background-color: #f5ec9f;
+    color: black!important;
 }
 
 td:hover::after,
@@ -294,10 +308,44 @@ th:hover::after {
 
 table tbody tr:first-child td:hover {
     background-color: #f5ec9f!important;
+    color: #000000!important;
+}
+
+table tbody tr td:first-child {
+    color: #000000;
 }
 
 table tbody tr:first-child {
     font-weight: 600!important;
+}
+
+
+.vertical-text {
+    -webkit-writing-mode: vertical-rl;
+    -ms-writing-mode: vertical-rl;
+    writing-mode: vertical-rl;
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+    white-space:nowrap;
+    display: block;
+}
+
+#container-vert {
+    padding: 142px 0 0 38px;
+}
+
+.no-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    cursor: default;
+
 }
 
 /* TODO: Fix device size queries for key change display */
