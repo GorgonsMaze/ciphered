@@ -267,7 +267,7 @@ td, th {
 }
 
 table tr td:hover {
-    background-color: #ffcf9a !important;
+    background-color: #ffcf9a;
 }
 
 body:not(.nohover) tbody tr:hover {
@@ -290,6 +290,14 @@ thead th:not(:empty):focus::after {
 td:hover::after,
 th:hover::after {
     background-color: #f5ec9f;
+}
+
+table tbody tr:first-child td:hover {
+    background-color: #f5ec9f!important;
+}
+
+table tbody tr:first-child {
+    font-weight: 600!important;
 }
 
 /* TODO: Fix device size queries for key change display */
