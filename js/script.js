@@ -331,6 +331,7 @@ function screenChange() {
  * Method for displaying text = key
  */
 function keyBlock() {
+    $('#vig-section').hide();
 
     var abcplain = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
@@ -343,6 +344,8 @@ function keyBlock() {
 
     var c = ''; // variable to hold return cipher key
 
+
+    var clickCounter = 0;
 
     // On Choose Cipher drop down change
     $('#cipherSelect').on('change', function () {
@@ -370,7 +373,10 @@ function keyBlock() {
         var randSub = subArray[Math.floor(Math.random() * subArray.length)];
 
         if (value == "caesar") {
+            $('#vig-section').hide('fast');
             $('#vigenere-input').hide('fast');
+
+            $("#sub-section").show('slow');
 
             $('#key-col').show('slow');
 
@@ -384,7 +390,10 @@ function keyBlock() {
 
         }
         else if (value === "rot13") {
+            $('#vig-section').hide('fast');
             $('#vigenere-input').hide('fast');
+
+            $("#sub-section").show('slow');
 
             $('#key-col').show('slow');
 
@@ -398,7 +407,10 @@ function keyBlock() {
 
         }
         else if (value === "substitution") {
+            $('#vig-section').hide('fast');
             $('#vigenere-input').hide('fast');
+
+            $("#sub-section").show('slow');
 
             $('#key-col').show('slow');
 
@@ -412,8 +424,15 @@ function keyBlock() {
 
         }
         else if (value === "vigenere") {
+            $('#sub-section').hide('fast');
             // Dynamically creates Vigenere table
-            makeTable();
+
+            if (clickCounter <= 0) {
+                makeTable();
+                clickCounter++;
+            }
+
+            $('#vig-section').show('slow');
 
             $('#key-col').hide('fast');
 
@@ -469,7 +488,6 @@ function keyBlock() {
 
         }
         else if (value >= '1' || value < '3' || value > '3' || value <= '12') {
-
             $('#cipherSelect').val('substitution').prop('selected', true);
 
             plainkey.append('Plaintext');
@@ -485,7 +503,7 @@ function keyBlock() {
     var previousVal = $('#vigenereKey').val();
     $('#vigenereKey').keyup(function () {
         var currentVal = $(this).val();
-        $('.abc-cipher').text(''); // clear current text in cipher key block
+        //$('.abc-cipher').text(''); // clear current text in cipher key block
         $('#cipher-key-title').html("Ciphertext:");
 
         clearTimeout(timer);
@@ -587,6 +605,7 @@ function loader() {
  * @returns {boolean}
  */
 function allLetters(str) {
+    str = str.replace(/\s/g, '');
     var letters = /^[A-Za-z]+$/g;
     if (str.match(letters)) {
         return true;
@@ -678,8 +697,9 @@ function makeTable() {
 }
 
 
-
 $(document).ready(function () {
+
+    // console.log(allLetters("HEY YOU"));
 
     // Dynamically creates select dd options
     createDropDown();
