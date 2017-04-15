@@ -373,10 +373,10 @@ function keyBlock() {
         var randSub = subArray[Math.floor(Math.random() * subArray.length)];
 
         if (value == "caesar") {
-            $('#vig-section').hide('fast');
+            $('#vig-section').fadeOut('fast').hide();
             $('#vigenere-input').hide('fast');
 
-            $("#sub-section").show('slow');
+            $("#sub-section").fadeIn('slow').show('slow');
 
             $('#key-col').show('slow');
 
@@ -390,10 +390,10 @@ function keyBlock() {
 
         }
         else if (value === "rot13") {
-            $('#vig-section').hide('fast');
+            $('#vig-section').fadeOut('fast').hide();
             $('#vigenere-input').hide('fast');
 
-            $("#sub-section").show('slow');
+            $("#sub-section").fadeIn('slow').show('slow');
 
             $('#key-col').show('slow');
 
@@ -407,10 +407,10 @@ function keyBlock() {
 
         }
         else if (value === "substitution") {
-            $('#vig-section').hide('fast');
+            $('#vig-section').fadeOut('fast').hide();
             $('#vigenere-input').hide('fast');
 
-            $("#sub-section").show('slow');
+            $("#sub-section").fadeIn('slow').show('slow');
 
             $('#key-col').show('slow');
 
@@ -424,15 +424,15 @@ function keyBlock() {
 
         }
         else if (value === "vigenere") {
-            $('#sub-section').hide('fast');
-            // Dynamically creates Vigenere table
+            $("#sub-section").fadeOut('fast').hide();
 
+            // Dynamically creates Vigenere table
             if (clickCounter <= 0) {
                 makeTable();
                 clickCounter++;
             }
 
-            $('#vig-section').show('slow');
+            $('#vig-section').fadeIn('slow').show();
 
             $('#key-col').hide('fast');
 
@@ -711,6 +711,8 @@ $(document).ready(function () {
     setTimeout(function () {
         setInterval(cursorBlink, 1750);
     }, 2750);
+
+    $('#progbar').hide();
 
 
     scroll();    // Scroll animation function

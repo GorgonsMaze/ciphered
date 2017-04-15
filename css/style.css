@@ -197,9 +197,9 @@ span.v-text-2 {
     background-color: #db3127;
 }
 
-.progress {
-    display: none;
-}
+/*.progress {*/
+/*display: none;*/
+/*}*/
 
 #key-col {
     display: none;
@@ -240,7 +240,7 @@ table tr:hover {
 }
 
 /*table tr td:hover {*/
-    /*background-color: #ffcf9a !important;*/
+/*background-color: #ffcf9a !important;*/
 /*}*/
 
 table tr td:first-child:hover {
@@ -285,7 +285,7 @@ table tr td:hover {
 
 body:not(.nohover) tbody tr:hover {
     background-color: #f5ec9f;
-    color: black!important;
+    color: black !important;
 }
 
 td:hover::after,
@@ -307,8 +307,8 @@ th:hover::after {
 }
 
 table tbody tr:first-child td:hover {
-    background-color: #f5ec9f!important;
-    color: #000000!important;
+    background-color: #f5ec9f !important;
+    color: #000000 !important;
 }
 
 table tbody tr td:first-child {
@@ -316,9 +316,8 @@ table tbody tr td:first-child {
 }
 
 table tbody tr:first-child {
-    font-weight: 600!important;
+    font-weight: 600 !important;
 }
-
 
 .vertical-text {
     -webkit-writing-mode: vertical-rl;
@@ -329,7 +328,7 @@ table tbody tr:first-child {
     -ms-transform: rotate(180deg);
     -o-transform: rotate(180deg);
     transform: rotate(180deg);
-    white-space:nowrap;
+    white-space: nowrap;
     display: block;
 }
 
