@@ -123,7 +123,8 @@
                     <p class="control">
                         <!-- TODO: Get input value for vigenere key -->
                         <input class="input" id="vigenereKey" type="text" placeholder="Ex: &quot;Boom&quot;">
-                        <span class="v-help v-text" id="v-err-text">You must enter a key <i class="fa fa-warning v-warn"></i></span>
+                        <span class="v-help v-text" id="v-err-text">You must enter a key <i
+                                class="fa fa-warning v-warn"></i></span>
                     </p>
                 </div>
                 <div id="key-col">
@@ -169,9 +170,7 @@
     </div>
 </div>
 
-<!-- TODO: Create Vigenere decipher table -->
-
-<section class="section">
+<section class="section" id="sub-section">
     <!--container-->
     <div class="columns">
         <div class="column is-12-mobile is-10-desktop is-offset-1-desktop is-half-widescreen is-offset-one-quarter-widescreen">
@@ -212,11 +211,20 @@
     </div>
 </section>
 
-<div class="columns">
-    <div class="column is-10-desktop is-8-widescreen is-offset-1-desktop is-offset-2-widescreen">
-        <div id="tableresult"></div>
+<section id="vig-section">
+    <!-- TODO fix border bug on resize from key above table -->
+
+    <div class="columns">
+        <div class="column is-1-desktop" id="container-vert"><p class="no-select vertical-text title is-1">Your Text
+            Characters</p></div>
+        <div class="column is-10-desktop is-8-widescreen">
+            <p class="has-text-centered title is-1 no-select">Vigenère Cipher Key</p>
+            <div id="tableresult"></div>
+        </div>
     </div>
-</div>
+
+</section>
+
 
 <!-- Footer -->
 <footer class="footer">
