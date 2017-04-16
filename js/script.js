@@ -633,7 +633,27 @@ function makeTable() {
 
 $(document).ready(function () {
 
-    // console.log(allLetters("HEY YOU"));
+    /** Nav drop Down toggle */
+
+    var toggle = $('.nav-toggle');
+    var menu = $('#nav-menu');
+
+    $(toggle).on('click', function (e) {
+        e.stopPropagation();
+        $(this).toggleClass('is-active');
+        menu.toggleClass('is-active');
+    });
+
+    $(document).on('click', function (e) {
+        if (!$(e.target).closest('.nav').length) {
+            if (menu.is(":visible") && menu.hasClass('is-active')) {
+                $(menu).toggleClass('is-active');
+                $(toggle).toggleClass('is-active');
+            }
+        }
+    });
+    /** End Drop Down Nav functionality **/
+
 
     // Dynamically creates select dd options
     createDropDown();
