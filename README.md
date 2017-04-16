@@ -8,11 +8,7 @@ Ciphered is a OS project that encrypts/decrypts messages using codes or substitu
 
 ## Work In Progress
 * Types of Ciphers / History
-* Updating Content
-* Validating User Input (Vigenere input fields)
-* Vigenere decrypt
-* Encrypt animation/display 
-
+* Directions on how the vigenere cipher / table works
 
 # How To Contribute
 Anyone is welcome to submit a Pull Request.
