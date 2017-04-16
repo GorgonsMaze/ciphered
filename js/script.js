@@ -79,36 +79,6 @@ function rotateCharacter(char, rot, encrypt) {
 
 }
 
-/**
- * Method to rotate character for Vigenere cipher
- *
- * TODO Find issue in rotateCharacter() method to resolve both ciphers
- *
- * @param char
- * @param rot
- * @returns {string}
- */
-function rotateCharacterVigenere(char, rot) {
-
-    // Alphabet position based on 0-25 (26 characters)
-    var c = alphabetPosition(char);
-
-    if (char == char.toUpperCase()) {
-
-        return String.fromCharCode(((c + rot) % 26) + 65);
-
-    }
-    else if (char == char.toLowerCase()) {
-
-        return String.fromCharCode(((c + rot) % 26) + 97);
-
-    }
-    else {
-        return String.fromCharCode(c);
-    }
-
-}
-
 
 /**
  * Method to encrypt/decrypt substitution cipher
@@ -116,11 +86,11 @@ function rotateCharacterVigenere(char, rot) {
  * @param rot
  * @returns {string}
  */
-function encryptCeasar(text, rot, encryptordecrypt) {
+function caesarCipher(text, rot, encrypt) {
     var encryptedMessage = [];
     for (var i = 0; i < text.length; i++) {
         if (isAlpha(text[i])) {
-            encryptedMessage.push(rotateCharacter(text[i], rot, encryptordecrypt));
+            encryptedMessage.push(rotateCharacter(text[i], rot, encrypt));
         }
         else {
             encryptedMessage.push(text[i]);
@@ -129,16 +99,20 @@ function encryptCeasar(text, rot, encryptordecrypt) {
     return encryptedMessage.join('');
 }
 
-// TODO Allow user to enter multiple words as key - get rid of white space but fix they key generator
+
 /**
+ * Method to encrypt / decrypt vigenere cipher text
+ *
  * @param text
  * @param key
  * @returns {string}
  */
-function encryptVigenere(text, key) {
+function vigenereCipher(text, key, encrypt) {
     var encryptedMessage = [];
     var idx = 0;
     var i = 0;
+
+    console.log("Encrypt vigeren = " + encrypt);
 
     // var keyString = text.replace(/[a-z]/gi, c => key[i++ % key.length]);  ES6
     var keyString = text.replace(/[a-z]/gi, function (c) {
@@ -148,7 +122,7 @@ function encryptVigenere(text, key) {
 
     while (idx < text.length) {
         if (isAlpha(text[idx])) {
-            encryptedMessage.push(rotateCharacterVigenere(text[idx], alphabetPosition(keyString[idx])));
+            encryptedMessage.push(rotateCharacter(text[idx], alphabetPosition(keyString[idx]), encrypt));
         }
         else {
             encryptedMessage.push(text[idx])
@@ -158,46 +132,6 @@ function encryptVigenere(text, key) {
 
     return encryptedMessage.join('');
 }
-
-console.log("The crow flies at midnight!");
-console.log(encryptVigenere("The crow flies at midnight!", "boom"));
-
-/* TODO : Add vigenere cipher decryption function */
-/**
- * Method to decrypt Vigenere Cipher
- * @param text
- * @param key
- * @returns {string}
- */
-function decryptVigenere(text, key) {
-    var decryptedMessage = [];
-    var idx = 0;
-    var i = 0;
-
-    // Replace the encrypted string with the key string
-    var keyString = text.replace(/[a-z]/gi, function (c) {
-        return c == ' ' ? c : key[i++ % key.length]
-    }); // ES5
-
-    while (idx < text.length) {
-        if (isAlpha(text[idx])) {
-
-            // TODO: Fix rotate character function for vigenere decipher
-
-            decryptedMessage.push(rotateCharacterVigenere(text[idx], alphabetPosition(keyString[idx])));
-
-        }
-        else {
-            decryptedMessage.push(text[idx])
-        }
-
-        idx++;
-    }
-
-    return decryptedMessage.join('');
-}
-
-/** end WIP **/
 
 
 /**
@@ -810,17 +744,14 @@ $(document).ready(function () {
 
             if (cipherSelected == 'caesar' || cipherSelected == 'substitution' || cipherSelected == 'rot13') {
                 loader();
-                // Display plain message text
-                // displayMessage.innerHTML = encryptCeasar(document.getElementById('enText').value, parseInt(document.getElementById('subSelect').value), encrypt);
-                textDisplayMsg.value = encryptCeasar(document.getElementById('enText').value, parseInt(document.getElementById('subSelect').value), encrypt);
+                textDisplayMsg.value = caesarCipher(document.getElementById('enText').value, parseInt(document.getElementById('subSelect').value), encrypt);
 
             } else if (cipherSelected == 'vigenere') {
                 loader();
-                // TODO : Pass vigenere dd value + string key (add input in index)
                 var vkey = document.getElementById('vigenereKey').value;
                 vkey = vkey.replace(/\s/g, '');
 
-                textDisplayMsg.value = encryptVigenere(document.getElementById('enText').value, vkey);
+                textDisplayMsg.value = vigenereCipher(document.getElementById('enText').value, vkey, encrypt);
             }
 
             //Test the text
@@ -837,15 +768,6 @@ $(document).ready(function () {
 
         }
 
-        // if (document.getElementById('cipherSelect').value === 'vigenere' && document.getElementById('vigenereKey').value.length <= 0) {
-        //     // vigenere input warning
-        //     $('.v-text').css('visibility', 'visible');
-        //     // icon warning
-        //     $('.v-warn').css('visibility', 'visible');
-        //     // Add danger class to input field
-        //     $('#vigenereKey').addClass('is-danger');
-        //
-        // }
 
         // TODO: If user enters text before selecting a cipher, keep text in textarea rather than clear
         // TODO: Use counter to stop clearing of substitution rotation and cipher drop downs if user has not run program
@@ -885,19 +807,20 @@ $(document).ready(function () {
 
             if (cipherSelected == 'caesar' || cipherSelected == 'substitution' || cipherSelected == 'rot13') {
                 loader();
-                // Display plain message text
-                // displayMessage.innerHTML = encryptCeasar(document.getElementById('enText').value, parseInt(document.getElementById('subSelect').value), encrypt);
-                textDisplayMsg.value = encryptCeasar(document.getElementById('enText').value, parseInt(document.getElementById('subSelect').value), encrypt);
+                textDisplayMsg.value = caesarCipher(document.getElementById('enText').value, parseInt(document.getElementById('subSelect').value), encrypt);
 
             } else if (cipherSelected == 'vigenere') {
-                // TODO : Pass vigenere dd value + string key (add input in index)
-                displayMessage.innerHTML = encryptVigenere();
+                loader();
+                var vkey = document.getElementById('vigenereKey').value;
+                vkey = vkey.replace(/\s/g, '');
+                textDisplayMsg.value = vigenereCipher(document.getElementById('enText').value, vkey, encrypt);
+
+
             }
 
             //Test the text
             console.log(document.getElementById('enText').value);
 
-            // TODO: Check value of cipher to determine which function it goes to
 
             // Test the substitution key value
             console.log(document.getElementById('subSelect').value);
