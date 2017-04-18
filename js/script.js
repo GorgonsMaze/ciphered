@@ -112,8 +112,6 @@ function vigenereCipher(text, key, encrypt) {
     var idx = 0;
     var i = 0;
 
-    console.log("Encrypt vigeren = " + encrypt);
-
     // var keyString = text.replace(/[a-z]/gi, c => key[i++ % key.length]);  ES6
     var keyString = text.replace(/[a-z]/gi, function (c) {
         return c == ' ' ? c : key[i++ % key.length]
@@ -467,7 +465,6 @@ function keyBlock() {
  */
 function keyChange(abc, idx) {
     var answer = abc.slice(idx) + abc.slice(0, idx);
-    console.log(answer.split('').join(' '));
     return answer.split('').join(' ');
 }
 
@@ -485,8 +482,6 @@ function vigKeyBlock(abc, vigKey) {
     var keyblock = [];
 
     vigKey = vigKey.toUpperCase();
-
-    console.log(vigKey);
 
     var keyString = abc.replace(/[a-z]/gi, function (c) {
         return c == '' ? c : vigKey[i++ % vigKey.length]
@@ -774,18 +769,6 @@ $(document).ready(function () {
                 textDisplayMsg.value = vigenereCipher(document.getElementById('enText').value, vkey, encrypt);
             }
 
-            //Test the text
-            console.log(document.getElementById('enText').value);
-
-            // TODO: Check value of cipher to determine which function it goes to
-
-            // Test the substitution key value
-            console.log(document.getElementById('subSelect').value);
-
-
-            // Test to make sure function works
-            console.log(encryptCeasar(document.getElementById('enText').value, parseInt(document.getElementById('subSelect').value)));
-
         }
 
 
@@ -837,18 +820,6 @@ $(document).ready(function () {
 
 
             }
-
-            //Test the text
-            console.log(document.getElementById('enText').value);
-
-
-            // Test the substitution key value
-            console.log(document.getElementById('subSelect').value);
-
-
-            // Test to make sure function works
-            console.log(encryptCeasar(document.getElementById('enText').value, parseInt(document.getElementById('subSelect').value)));
-
         }
 
         // TODO: If user enters text before selecting a cipher, keep text in textarea rather than clear
