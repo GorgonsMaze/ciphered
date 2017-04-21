@@ -249,7 +249,11 @@ table tr:hover {
 /*}*/
 
 table tr td:first-child:hover {
-    background-color: #f5ec9f !important;
+    background-color: rgba(0, 6, 255, 0.28);
+}
+
+table tr td:first-child {
+    background-color: rgba(0, 6, 255, 0.28);
 }
 
 .center-table th {
@@ -270,6 +274,7 @@ td, th {
     padding: 2px;
     position: relative;
 }
+
 
 table tr:first-child {
     border-bottom: 2px solid #a4a4a4;
@@ -311,8 +316,31 @@ th:hover::after {
     background-color: #f5ec9f;
 }
 
+td:first-child:hover::after {
+    background-color: rgba(0, 6, 255, 0.1);
+}
+
+table tbody tr:first-child {
+    background-color: rgba(0, 6, 255, 0.28);
+}
+
+table tbody tr:first-child:hover {
+    background-color: rgba(0, 6, 255, 0.4) !important;
+}
+
+/*table tbody tr:first-child td:hover {*/
+    /*background-color: rgba(0, 6, 255, 0.28) !important;*/
+/*}*/
+
+table tbody tr:first-child td:first-child {
+    background-color: whitesmoke !important;
+}
+table tbody tr:first-child td:first-child:hover {
+    background-color: whitesmoke !important;
+}
+
 table tbody tr:first-child td:hover {
-    background-color: #f5ec9f !important;
+    background-color: transparent!important;
     color: #000000 !important;
 }
 
