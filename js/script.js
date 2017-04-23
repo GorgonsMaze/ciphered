@@ -1,10 +1,5 @@
 /** Created by ianarsenault on 11/9/16. */
 
-/** TODO Declare variables for whole script **/
-/** TODO function that will create vigenere cipher table */
-
-
-/***+++++++++++++++  WIP ++++++++++++++++++++**/
 /**
  * @param str
  * @returns {Array|{index: number, input: string}|*}
@@ -623,6 +618,14 @@ function makeTable() {
     //divTable.innerHTML = "";
     divTable.appendChild(table);
 
+}
+
+
+/**
+ * Method to tweet out encrypted message with key + link
+ */
+function tweetIt() {
+    return 0;
 }
 
 
