@@ -642,13 +642,14 @@ function displayHeader() {
         "vig": [
             {
                 title: "Vigenère Cipher",
-                description: "blah blah blah vigenere blah blah blah "
+                description: "Vigenère cipher is a method of encoding alphabetic plaintext by using a series of substitution ciphers" +
+                "based on the letters of a keyword. It's a form of polyalphabetic substitution."
             }
         ],
         "sub": [
             {
                 title: "Substitution Cipher",
-                description: "substitution stuff blah yes, blah substitution"
+                description: "A Substitution cipher is a method of encoding [substituting] every plaintext character into a ciphertext character"
             }
         ]
 
@@ -659,7 +660,7 @@ function displayHeader() {
         if (headerObj.hasOwnProperty(k)) {
             console.log(k);
 
-            for (var i = 0, j = headerObj[k].length; i <j; i++) {
+            for (var i = 0, j = headerObj[k].length; i < j; i++) {
                 console.log("Title: %s, Text: %s", headerObj[k][i].title, headerObj[k][i].description);
             }
         }
