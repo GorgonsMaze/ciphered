@@ -638,7 +638,7 @@ function tweetIt(msg, key) {
 
 function displayHeader() {
     // Create object
-    var headerObj = {
+    return headerObj = {
         "vig": [
             {
                 title: "Vigenère Cipher",
@@ -655,26 +655,92 @@ function displayHeader() {
 
     };
 
-    // loop through the Object
-    for (var k in headerObj) {
-        if (headerObj.hasOwnProperty(k)) {
-            console.log(k);
 
-            for (var i = 0, j = headerObj[k].length; i < j; i++) {
-                console.log("Title: %s, Text: %s", headerObj[k][i].title, headerObj[k][i].description);
-            }
-        }
-    }
+    /* TODO Get Title and description and display together for 30 seconds then swap with second key title and description */
 
 
 }
 
+function recurseHeader(count) {
+    var obj = displayHeader();
+    console.log(obj);
+
+    for (var k in obj) {
+        if (obj.hasOwnProperty(k)) {
+
+            for (var i = 0, j = obj[k].length; i < j; i++) {
+                console.log("Title: %s, Text: %s", obj[k][i].title, obj[k][i].description);
+            }
+        }
+    }
+}
 
 $(document).ready(function () {
 
 
-    console.log(displayHeader());
+//     var arr = ["#f00", "#ff0", "#f0f", "#f66"];
+//
+// // run through the array forever
+//     (function recurse(counter) {
+//         // get the colour
+//         var color = arr[counter];
+//         // animate it
+//         $('#testInterval').delay('1200').animate({
+//             backgroundColor: color
+//         }, 600);
+//         // delete the value to save memory
+//         delete arr[counter];
+//         // add the value at the end of the array
+//         arr.push(color);
+//         // run it again for the next number
+//         setTimeout(function() {
+//             recurse(counter + 1);
+//         }, 200);
+// // start it for the first number.
+//     })(0);
 
+
+    /** Testing Object display value interation */
+
+    var obj = {
+        "vig": [
+            {
+                title: "Vigenère Cipher",
+                description: "Vigenère cipher is a method of encoding alphabetic plaintext by using a series of substitution ciphers" +
+                "based on the letters of a keyword. It's a form of polyalphabetic substitution."
+            }
+        ],
+        "sub": [
+            {
+                title: "Substitution Cipher",
+                description: "A Substitution cipher is a method of encoding [substituting] every plaintext character into a ciphertext character"
+            }
+        ]
+
+    };
+
+    var objKeys = Object.keys(obj);
+    var numOfKeys = Object.keys(obj).length;
+    var index = 0;
+
+    console.log("Title: " + obj.vig[0].title + " Description: " + obj.vig[0].description);
+
+    console.log("Title: " + obj.sub[0].title + " Description: " + obj.sub[0].description);
+
+    // Trying to find a way to change vig->sub->vig->sub repeatedly
+
+    console.log(obj[objKeys[index]][0].title);
+
+    setInterval(function() {
+        $('#intervalDiv').text(obj[objKeys[index]][0].title + " " + obj[objKeys[index]][0].description);
+        index = (index + 1) % numOfKeys;
+    }, 2500);
+    // console.log(displayHeader());
+
+    /****** End  Test ***/
+
+    recurseHeader();
+    displayHeader();
     /** Nav drop Down toggle */
 
     var toggle = $('.nav-toggle');
