@@ -636,84 +636,23 @@ function tweetIt(msg, key) {
     $('#tweetBtn').attr('href', 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(msg + ' - Key-' + key + ' https://www.google.com/'));
 }
 
-function displayHeader() {
-    // Create object
-    return headerObj = {
-        "vig": [
-            {
-                title: "Vigenère Cipher",
-                description: "Vigenère cipher is a method of encoding alphabetic plaintext by using a series of substitution ciphers" +
-                "based on the letters of a keyword. It's a form of polyalphabetic substitution."
-            }
-        ],
-        "sub": [
-            {
-                title: "Substitution Cipher",
-                description: "A Substitution cipher is a method of encoding [substituting] every plaintext character into a ciphertext character"
-            }
-        ]
 
-    };
-
-
-    /* TODO Get Title and description and display together for 30 seconds then swap with second key title and description */
-
-
-}
-
-function recurseHeader(count) {
-    var obj = displayHeader();
-    console.log(obj);
-
-    for (var k in obj) {
-        if (obj.hasOwnProperty(k)) {
-
-            for (var i = 0, j = obj[k].length; i < j; i++) {
-                console.log("Title: %s, Text: %s", obj[k][i].title, obj[k][i].description);
-            }
-        }
-    }
-}
-
-$(document).ready(function () {
-
-
-//     var arr = ["#f00", "#ff0", "#f0f", "#f66"];
-//
-// // run through the array forever
-//     (function recurse(counter) {
-//         // get the colour
-//         var color = arr[counter];
-//         // animate it
-//         $('#testInterval').delay('1200').animate({
-//             backgroundColor: color
-//         }, 600);
-//         // delete the value to save memory
-//         delete arr[counter];
-//         // add the value at the end of the array
-//         arr.push(color);
-//         // run it again for the next number
-//         setTimeout(function() {
-//             recurse(counter + 1);
-//         }, 200);
-// // start it for the first number.
-//     })(0);
-
-
-    /** Testing Object display value interation */
-
+/**
+ *  Method to display new header ever n seconds
+ */
+function recurseHeader() {
     var obj = {
-        "vig": [
-            {
-                title: "Vigenère Cipher",
-                description: "Vigenère cipher is a method of encoding alphabetic plaintext by using a series of substitution ciphers" +
-                "based on the letters of a keyword. It's a form of polyalphabetic substitution."
-            }
-        ],
         "sub": [
             {
                 title: "Substitution Cipher",
                 description: "A Substitution cipher is a method of encoding [substituting] every plaintext character into a ciphertext character"
+            }
+        ],
+        "vig": [
+            {
+                title: "Vigenère Cipher",
+                description: "Vigenère cipher is a method of encoding alphabetic plaintext by using a series of substitution ciphers" +
+                " based on the letters of a keyword. It's a form of polyalphabetic substitution."
             }
         ]
 
@@ -723,24 +662,47 @@ $(document).ready(function () {
     var numOfKeys = Object.keys(obj).length;
     var index = 0;
 
-    console.log("Title: " + obj.vig[0].title + " Description: " + obj.vig[0].description);
-
-    console.log("Title: " + obj.sub[0].title + " Description: " + obj.sub[0].description);
-
-    // Trying to find a way to change vig->sub->vig->sub repeatedly
-
-    console.log(obj[objKeys[index]][0].title);
+    //console.log("Title: " + obj.vig[0].title + " Description: " + obj.vig[0].description);
+    //console.log("Title: " + obj.sub[0].title + " Description: " + obj.sub[0].description);
+    //console.log(obj[objKeys[index]][0].title);
 
     setInterval(function() {
-        $('#intervalDiv').text(obj[objKeys[index]][0].title + " " + obj[objKeys[index]][0].description);
-        index = (index + 1) % numOfKeys;
-    }, 2500);
-    // console.log(displayHeader());
+        //$('#intervalDiv').text(obj[objKeys[index]][0].title + " " + obj[objKeys[index]][0].description);
 
-    /****** End  Test ***/
+        $("#title, #description").fadeOut(400, function () {
+            $('#title').text(obj[objKeys[index]][0].title).fadeIn(400);
+            $('#description').text(obj[objKeys[index]][0].description).fadeIn(400);
+        });
+        index = (index + 1) % numOfKeys;
+    }, 16000); // Every 16 seconds fade out text and fade in new text
+}
+
+$(document).ready(function () {
+
+
+    var arr = ["#f00", "#ff0", "#f0f", "#f66"];
+
+// run through the array forever
+    (function recurse(counter) {
+        // get the colour
+        var color = arr[counter];
+        // animate it
+        $('#testInterval').delay('1200').animate({
+            backgroundColor: color
+        }, 600);
+        // delete the value to save memory
+        delete arr[counter];
+        // add the value at the end of the array
+        arr.push(color);
+        // run it again for the next number
+        setTimeout(function() {
+            recurse(counter + 1);
+        }, 200);
+// start it for the first number.
+    })(0);
 
     recurseHeader();
-    displayHeader();
+
     /** Nav drop Down toggle */
 
     var toggle = $('.nav-toggle');
