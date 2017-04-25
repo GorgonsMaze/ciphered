@@ -3,19 +3,41 @@
  */
 
 
-function encryptCeasar(text, rot, encryptordecrypt) {
-    var encryptedMessage = [];
-    for (var i = 0; i < text.length; i++) {
-        if (isAlpha(text[i])) {
-            encryptedMessage.push(rotateCharacter(text[i], rot, encryptordecrypt));
-        }
-        else {
-            encryptedMessage.push(text[i]);
-        }
-    }
-    return encryptedMessage.join('');
+
+/**
+ * @param str
+ * @returns {Array|{index: number, input: string}|*}
+ */
+function isAlpha(str) {
+    var regex = /[A-Za-z]/;
+    return str.match(regex);
 }
 
+
+/**
+ * Method that returns the alphabet position of character
+ * @param letter
+ * @returns {*}
+ */
+function alphabetPosition(letter) {
+    if (letter.charCodeAt(0) >= 97 && letter.charCodeAt(0) <= 122) {
+        return letter.charCodeAt(0) - 97;
+    }
+    else if (letter.charCodeAt(0) >= 65 && letter.charCodeAt(0) <= 90) {
+        return letter.charCodeAt(0) - 65;
+    }
+    else {
+        return letter.charCodeAt(0);
+    }
+}
+
+
+/**
+ * Method to rotate the character
+ * @param char
+ * @param rot
+ * @returns {string}
+ */
 function rotateCharacter(char, rot, encrypt) {
 
     // Alphabet position based on 0-25 (26 characters)
@@ -43,13 +65,6 @@ function rotateCharacter(char, rot, encrypt) {
             if (rot == rot && c <= (rot - 1)) {
                 return String.fromCharCode(((c - rot) % 26) + 97 + 26);
             }
-            // if (rot == 1 && c == 0) {
-            //     return String.fromCharCode(((c - rot) % 26) + 97 + 26);
-            // }
-            // else if (rot == 2 && c <= 1) {
-            //     return String.fromCharCode(((c - rot) % 26) + 97 + 26);
-            // }
-
             else {
                 return String.fromCharCode(((c - rot) % 26) + 97);
             }
@@ -64,24 +79,56 @@ function rotateCharacter(char, rot, encrypt) {
 }
 
 
-function alphabetPosition(letter) {
-    if (letter.charCodeAt(0) >= 97 && letter.charCodeAt(0) <= 122) {
-        return letter.charCodeAt(0) - 97;
+/**
+ * Method to encrypt/decrypt substitution cipher
+ * @param text
+ * @param rot
+ * @returns {string}
+ */
+function caesarCipher(text, rot, encrypt) {
+    var encryptedMessage = [];
+    for (var i = 0; i < text.length; i++) {
+        if (isAlpha(text[i])) {
+            encryptedMessage.push(rotateCharacter(text[i], rot, encrypt));
+        }
+        else {
+            encryptedMessage.push(text[i]);
+        }
     }
-    else if (letter.charCodeAt(0) >= 65 && letter.charCodeAt(0) <= 90) {
-        return letter.charCodeAt(0) - 65;
-    }
-    else {
-        return letter.charCodeAt(0);
-    }
+    return encryptedMessage.join('');
 }
 
 
-function isAlpha(str) {
-    var regex = /[A-Za-z]/;
-    return str.match(regex);
-}
+/**
+ * Method to encrypt / decrypt vigenere cipher text
+ *
+ * @param text
+ * @param key
+ * @returns {string}
+ */
+function vigenereCipher(text, key, encrypt) {
+    var encryptedMessage = [];
+    var idx = 0;
+    var i = 0;
 
+    // var keyString = text.replace(/[a-z]/gi, c => key[i++ % key.length]);  ES6
+    var keyString = text.replace(/[a-z]/gi, function (c) {
+        return c == ' ' ? c : key[i++ % key.length]
+    }); // ES5
+    // var keyString = text.replace(/[a-z]/gi, (a, b) => a == ' ' ? a : key[i++ % key.length]);
+
+    while (idx < text.length) {
+        if (isAlpha(text[idx])) {
+            encryptedMessage.push(rotateCharacter(text[idx], alphabetPosition(keyString[idx]), encrypt));
+        }
+        else {
+            encryptedMessage.push(text[idx])
+        }
+        idx++;
+    }
+
+    return encryptedMessage.join('');
+}
 
 console.log("key 1");
 console.log(encryptCeasar("abcdefghijklmnopqrstuvwxyz", 1, true));

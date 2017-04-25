@@ -636,10 +636,43 @@ function tweetIt(msg, key) {
     $('#tweetBtn').attr('href', 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(msg + ' - Key-' + key + ' https://www.google.com/'));
 }
 
+function displayHeader() {
+    // Create object
+    var headerObj = {
+        "vig": [
+            {
+                title: "Vigenère Cipher",
+                description: "blah blah blah vigenere blah blah blah "
+            }
+        ],
+        "sub": [
+            {
+                title: "Substitution Cipher",
+                description: "substitution stuff blah yes, blah substitution"
+            }
+        ]
+
+    };
+
+    // loop through the Object
+    for (var k in headerObj) {
+        if (headerObj.hasOwnProperty(k)) {
+            console.log(k);
+
+            for (var i = 0, j = headerObj[k].length; i <j; i++) {
+                console.log("Title: %s, Text: %s", headerObj[k][i].title, headerObj[k][i].description);
+            }
+        }
+    }
+
+
+}
+
 
 $(document).ready(function () {
 
 
+    console.log(displayHeader());
 
     /** Nav drop Down toggle */
 
@@ -852,7 +885,14 @@ $(document).ready(function () {
         } else {
             key = document.getElementById('subSelect').value;
         }
-        tweetIt(msg, key);
+
+        // If cipher display is empty throw error message
+        if (document.getElementById('msgdisplay').value.length > 0) {
+            tweetIt(msg, key);
+        } else {
+            // throw error display
+        }
+
     });
 
 
