@@ -211,7 +211,7 @@ function cursorBlink() {
         // Fade cursor out and back in
         $('#cursor').fadeOut('fast').fadeIn('fast');
 
-    }, 1200);
+    }, 500);
 
 }
 
@@ -536,6 +536,7 @@ function allLetters(str) {
     }
 }
 
+
 /**
  * Method to create drop down of nums 1-25
  */
@@ -624,12 +625,54 @@ function makeTable() {
 /**
  * Method to tweet out encrypted message with key + link
  */
-function tweetIt() {
-    return 0;
+function tweetIt(msg, key) {
+    // add link
+    // Do validation to make sure it's all under 160 characters.
+
+    // Check total character length of message - key - url
+    // If greater than 140 - take message.length and subtract until equals..
+    // 140 - (url + key)
+    // Either alert user to allow them to either proceed with shorter message or proceed with truncated message
+    $('#tweetBtn').attr('href', 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(msg + ' - Key-' + key + ' https://www.google.com/'));
+}
+
+function displayHeader() {
+    // Create object
+    var headerObj = {
+        "vig": [
+            {
+                title: "Vigenère Cipher",
+                description: "blah blah blah vigenere blah blah blah "
+            }
+        ],
+        "sub": [
+            {
+                title: "Substitution Cipher",
+                description: "substitution stuff blah yes, blah substitution"
+            }
+        ]
+
+    };
+
+    // loop through the Object
+    for (var k in headerObj) {
+        if (headerObj.hasOwnProperty(k)) {
+            console.log(k);
+
+            for (var i = 0, j = headerObj[k].length; i <j; i++) {
+                console.log("Title: %s, Text: %s", headerObj[k][i].title, headerObj[k][i].description);
+            }
+        }
+    }
+
+
 }
 
 
 $(document).ready(function () {
+
+
+    console.log(displayHeader());
 
     /** Nav drop Down toggle */
 
@@ -828,6 +871,27 @@ $(document).ready(function () {
         // TODO: If user enters text before selecting a cipher, keep text in textarea rather than clear
         // TODO: Use counter to stop clearing of substitution rotation and cipher drop downs if user has not run program
 
+
+    });
+
+
+    $('#tweetBtn').on('click', function () {
+        // alert("Button works!");
+        var key = null;
+        var msg = document.getElementById('msgdisplay').value;
+        // Add checks that other fields are not empty before allowing click
+        if (document.getElementById('cipherSelect').value === 'vigenere') {
+            key = document.getElementById('vigenereKey').value;
+        } else {
+            key = document.getElementById('subSelect').value;
+        }
+
+        // If cipher display is empty throw error message
+        if (document.getElementById('msgdisplay').value.length > 0) {
+            tweetIt(msg, key);
+        } else {
+            // throw error display
+        }
 
     });
 
