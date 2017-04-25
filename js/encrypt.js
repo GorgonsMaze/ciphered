@@ -3,7 +3,6 @@
  */
 
 
-
 /**
  * @param str
  * @returns {Array|{index: number, input: string}|*}
@@ -131,183 +130,196 @@ function vigenereCipher(text, key, encrypt) {
 }
 
 console.log("key 1");
-console.log(encryptCeasar("abcdefghijklmnopqrstuvwxyz", 1, true));
+console.log(caesarCipher("abcdefghijklmnopqrstuvwxyz", 1, true));
 console.log("Decrypting....");
-console.log(encryptCeasar("bcdefghijklmnopqrstuvwxyza", 1, false));
+console.log(caesarCipher("bcdefghijklmnopqrstuvwxyza", 1, false));
 
 console.log("");
 
 console.log("key 2");
-console.log(encryptCeasar("abcdefghijklmnopqrstuvwxyz", 2, true));
+console.log(caesarCipher("abcdefghijklmnopqrstuvwxyz", 2, true));
 console.log("Decrypting....");
-console.log(encryptCeasar("cdefghijklmnopqrstuvwxyzab", 2, false));
+console.log(caesarCipher("cdefghijklmnopqrstuvwxyzab", 2, false));
 
 console.log("");
 
 console.log("key 3");
-console.log(encryptCeasar("abcdefghijklmnopqrstuvwxyz", 3, true));
+console.log(caesarCipher("abcdefghijklmnopqrstuvwxyz", 3, true));
 console.log("Decrypting....");
-console.log(encryptCeasar("defghijklmnopqrstuvwxyzabc", 3, false));
+console.log(caesarCipher("defghijklmnopqrstuvwxyzabc", 3, false));
 
 console.log("");
 
 console.log("key 4");
-console.log(encryptCeasar("abcdefghijklmnopqrstuvwxyz", 4, true));
+console.log(caesarCipher("abcdefghijklmnopqrstuvwxyz", 4, true));
 console.log("Decrypting....");
-console.log(encryptCeasar("efghijklmnopqrstuvwxyzabcd", 4, false));
+console.log(caesarCipher("efghijklmnopqrstuvwxyzabcd", 4, false));
 
 console.log("");
 
 console.log("key 5");
-console.log(encryptCeasar("abcdefghijklmnopqrstuvwxyz", 5, true));
+console.log(caesarCipher("abcdefghijklmnopqrstuvwxyz", 5, true));
 console.log("Decrypting....");
-console.log(encryptCeasar("fghijklmnopqrstuvwxyzabcde", 5, false));
+console.log(caesarCipher("fghijklmnopqrstuvwxyzabcde", 5, false));
 
 console.log("");
 
 console.log("key 6");
-console.log(encryptCeasar("abcdefghijklmnopqrstuvwxyz", 6, true));
+console.log(caesarCipher("abcdefghijklmnopqrstuvwxyz", 6, true));
 console.log("Decrypting....");
-console.log(encryptCeasar("ghijklmnopqrstuvwxyzabcdef", 6, false));
+console.log(caesarCipher("ghijklmnopqrstuvwxyzabcdef", 6, false));
 
 
 console.log("");
 
 console.log("key 7");
-console.log(encryptCeasar("abcdefghijklmnopqrstuvwxyz", 7, true));
+console.log(caesarCipher("abcdefghijklmnopqrstuvwxyz", 7, true));
 console.log("Decrypting....");
-console.log(encryptCeasar("hijklmnopqrstuvwxyzabcdefg", 7, false));
+console.log(caesarCipher("hijklmnopqrstuvwxyzabcdefg", 7, false));
 
 console.log("");
 
 console.log("key 8");
-console.log(encryptCeasar("abcdefghijklmnopqrstuvwxyz", 8, true));
+console.log(caesarCipher("abcdefghijklmnopqrstuvwxyz", 8, true));
 console.log("Decrypting....");
-console.log(encryptCeasar("ijklmnopqrstuvwxyzabcdefgh", 8, false));
+console.log(caesarCipher("ijklmnopqrstuvwxyzabcdefgh", 8, false));
 
 console.log("");
 
 console.log("key 9");
-console.log(encryptCeasar("abcdefghijklmnopqrstuvwxyz", 9, true));
+console.log(caesarCipher("abcdefghijklmnopqrstuvwxyz", 9, true));
 console.log("Decrypting....");
-console.log(encryptCeasar("jklmnopqrstuvwxyzabcdefghi", 9, false));
+console.log(caesarCipher("jklmnopqrstuvwxyzabcdefghi", 9, false));
 
 console.log("");
 
 console.log("key 10");
-console.log(encryptCeasar("abcdefghijklmnopqrstuvwxyz", 10, true));
+console.log(caesarCipher("abcdefghijklmnopqrstuvwxyz", 10, true));
 console.log("Decrypting....");
-console.log(encryptCeasar("klmnopqrstuvwxyzabcdefghij", 10, false));
+console.log(caesarCipher("klmnopqrstuvwxyzabcdefghij", 10, false));
 
 console.log("");
 
 console.log("key 11");
-console.log(encryptCeasar("abcdefghijklmnopqrstuvwxyz", 11, true));
+console.log(caesarCipher("abcdefghijklmnopqrstuvwxyz", 11, true));
 console.log("Decrypting....");
-console.log(encryptCeasar("lmnopqrstuvwxyzabcdefghijk", 11, false));
+console.log(caesarCipher("lmnopqrstuvwxyzabcdefghijk", 11, false));
 
 console.log("");
 
 console.log("key 12");
-console.log(encryptCeasar("abcdefghijklmnopqrstuvwxyz", 12, true));
+console.log(caesarCipher("abcdefghijklmnopqrstuvwxyz", 12, true));
 console.log("Decrypting....");
-console.log(encryptCeasar("mnopqrstuvwxyzabcdefghijkl", 12, false));
+console.log(caesarCipher("mnopqrstuvwxyzabcdefghijkl", 12, false));
 
 console.log("");
 
 console.log("key 13");
-console.log(encryptCeasar("abcdefghijklmnopqrstuvwxyz", 13, true));
+console.log(caesarCipher("abcdefghijklmnopqrstuvwxyz", 13, true));
 console.log("Decrypting....");
-console.log(encryptCeasar("nopqrstuvwxyzabcdefghijklm", 13, false));
+console.log(caesarCipher("nopqrstuvwxyzabcdefghijklm", 13, false));
 
-console.log("");console.log("");console.log("");console.log("");console.log("");console.log("");
+console.log("");
+console.log("");
+console.log("");
+console.log("");
+console.log("");
+console.log("");
 
 console.log("key 1");
-console.log(encryptCeasar("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 1, true));
+console.log(caesarCipher("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 1, true));
 console.log("Decrypting....");
-console.log(encryptCeasar("BCDEFGHIJKLMNOPQRSTUVWXYZA", 1, false));
+console.log(caesarCipher("BCDEFGHIJKLMNOPQRSTUVWXYZA", 1, false));
 
 console.log("");
 
 console.log("key 2");
-console.log(encryptCeasar("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 2, true));
+console.log(caesarCipher("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 2, true));
 console.log("Decrypting....");
-console.log(encryptCeasar("CDEFGHIJKLMNOPQRSTUVWXYZAB", 2, false));
+console.log(caesarCipher("CDEFGHIJKLMNOPQRSTUVWXYZAB", 2, false));
 
 console.log("");
 
 console.log("key 3");
-console.log(encryptCeasar("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 3, true));
+console.log(caesarCipher("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 3, true));
 console.log("Decrypting....");
-console.log(encryptCeasar("DEFGHIJKLMNOPQRSTUVWXYZABC", 3, false));
+console.log(caesarCipher("DEFGHIJKLMNOPQRSTUVWXYZABC", 3, false));
 
 console.log("");
 
 console.log("key 4");
-console.log(encryptCeasar("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 4, true));
+console.log(caesarCipher("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 4, true));
 console.log("Decrypting....");
-console.log(encryptCeasar("EFGHIJKLMNOPQRSTUVWXYZABCD", 4, false));
+console.log(caesarCipher("EFGHIJKLMNOPQRSTUVWXYZABCD", 4, false));
 
 console.log("");
 
 console.log("key 5");
-console.log(encryptCeasar("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 5, true));
+console.log(caesarCipher("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 5, true));
 console.log("Decrypting....");
-console.log(encryptCeasar("FGHIJKLMNOPQRSTUVWXYZABCDE", 5, false));
+console.log(caesarCipher("FGHIJKLMNOPQRSTUVWXYZABCDE", 5, false));
 
 console.log("");
 
 console.log("key 6");
-console.log(encryptCeasar("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 6, true));
+console.log(caesarCipher("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 6, true));
 console.log("Decrypting....");
-console.log(encryptCeasar("GHIJKLMNOPQRSTUVWXYZABCDEF", 6, false));
+console.log(caesarCipher("GHIJKLMNOPQRSTUVWXYZABCDEF", 6, false));
 
 
 console.log("");
 
 console.log("key 7");
-console.log(encryptCeasar("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 7, true));
+console.log(caesarCipher("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 7, true));
 console.log("Decrypting....");
-console.log(encryptCeasar("HIJKLMNOPQRSTUVWXYZABCDEFG", 7, false));
+console.log(caesarCipher("HIJKLMNOPQRSTUVWXYZABCDEFG", 7, false));
 
 console.log("");
 
 console.log("key 8");
-console.log(encryptCeasar("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 8, true));
+console.log(caesarCipher("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 8, true));
 console.log("Decrypting....");
-console.log(encryptCeasar("IJKLMNOPQRSTUVWXYZABCDEFGH", 8, false));
+console.log(caesarCipher("IJKLMNOPQRSTUVWXYZABCDEFGH", 8, false));
 
 console.log("");
 
 console.log("key 9");
-console.log(encryptCeasar("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 9, true));
+console.log(caesarCipher("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 9, true));
 console.log("Decrypting....");
-console.log(encryptCeasar("JKLMNOPQRSTUVWXYZABCDEFGHI", 9, false));
+console.log(caesarCipher("JKLMNOPQRSTUVWXYZABCDEFGHI", 9, false));
 
 console.log("");
 
 console.log("key 10");
-console.log(encryptCeasar("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 10, true));
+console.log(caesarCipher("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 10, true));
 console.log("Decrypting....");
-console.log(encryptCeasar("KLMNOPQRSTUVWXYZABCDEFGHIJ", 10, false));
+console.log(caesarCipher("KLMNOPQRSTUVWXYZABCDEFGHIJ", 10, false));
 
 console.log("");
 
 console.log("key 11");
-console.log(encryptCeasar("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 11, true));
+console.log(caesarCipher("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 11, true));
 console.log("Decrypting....");
-console.log(encryptCeasar("LMNOPQRSTUVWXYZABCDEFGHIJK", 11, false));
+console.log(caesarCipher("LMNOPQRSTUVWXYZABCDEFGHIJK", 11, false));
 
 console.log("");
 
 console.log("key 12");
-console.log(encryptCeasar("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 12, true));
+console.log(caesarCipher("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 12, true));
 console.log("Decrypting....");
-console.log(encryptCeasar("MNOPQRSTUVWXYZABCDEFGHIJKL", 12, false));
+console.log(caesarCipher("MNOPQRSTUVWXYZABCDEFGHIJKL", 12, false));
 
 console.log("");
 
 console.log("key 13");
-console.log(encryptCeasar("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 13, true));
+console.log(caesarCipher("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 13, true));
 console.log("Decrypting....");
-console.log(encryptCeasar("NOPQRSTUVWXYZABCDEFGHIJKLM", 13, false));
+console.log(caesarCipher("NOPQRSTUVWXYZABCDEFGHIJKLM", 13, false));
+
+console.log("\n\n");
+
+console.log("*****   VIGENER CIPHER *****")
+console.log("Key boom");
+console.log(vigenereCipher("The crow flies at midnight", "boom", true));
+console.log("Decrypting....");
+console.log(vigenereCipher("Uvs osck rmwse bh auebwsih", "boom", false));
