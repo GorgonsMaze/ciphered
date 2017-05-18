@@ -1,5 +1,12 @@
 /** Created by ianarsenault on 11/9/16. */
 
+
+/** TODO: Create url that will pass cipher selected and key input */
+/** This will allow user to tweet out their coded message, and allow others
+ *  to click the link to decrypt the message without having to search for the
+ *  cipher or key */
+
+
 /**
  * @param str
  * @returns {Array|{index: number, input: string}|*}
@@ -633,7 +640,7 @@ function tweetIt(msg, key) {
     // If greater than 140 - take message.length and subtract until equals..
     // 140 - (url + key)
     // Either alert user to allow them to either proceed with shorter message or proceed with truncated message
-    $('#tweetBtn').attr('href', 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(msg + ' - Key-' + key + ' https://www.google.com/'));
+    $('#tweetBtn').attr('href', 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(msg + ' - Key-' + key));
 }
 
 
@@ -679,6 +686,8 @@ function recurseHeader() {
 
 $(document).ready(function () {
 
+    // Disable tweet button
+    //$('#tweetBtn').attr('disabled', 'disabled');
 
     var arr = ["#f00", "#ff0", "#f0f", "#f66"];
 
@@ -754,6 +763,11 @@ $(document).ready(function () {
     // in text area - on change validate whether anything has been entered by the user
     $('#enText').keyup(function () {
         // alert("keyup");
+
+        //     var msg = document.getElementById('msgdisplay').value;
+        //     var evt = new CustomEvent('change');
+        //     console.log(document.getElementById('msgdisplay').dispatchEvent(evt));
+
         if ($(this) > '0') {
             $(this).removeClass('is-danger');
             // Text Warning
@@ -904,10 +918,33 @@ $(document).ready(function () {
     });
 
 
+    // TODO DETECT WHEN ENCRYPTED MESSAGE TEXT AREA HAS CHANGED.
+    /// STILL PASSING OLD VALUE TO TWEET IT BUTTON EVEN AFTER CLEARED
+
+
+    $('#decryptMessage, #encryptMessage, #clearCancel').on('click', function () {
+        alert("clicked");
+    });
+
+    // $('#msgdisplay').keyup(function () {
+    //     var msg = document.getElementById('msgdisplay').value;
+    //     var evt = new CustomEvent('change');
+    //     console.log(document.getElementById('msgdisplay').dispatchEvent(evt));
+    // });
+
+
+    $('#msgdisplay').change(function () {
+       alert("ejlsjdflkdsjflksjflksjflk");
+    });
     $('#tweetBtn').on('click', function () {
         // alert("Button works!");
         var key = null;
         var msg = document.getElementById('msgdisplay').value;
+        var evt = new CustomEvent('change');
+        console.log(document.getElementById('msgdisplay').dispatchEvent(evt));
+
+
+        //alert(msg);
         // Add checks that other fields are not empty before allowing click
         if (document.getElementById('cipherSelect').value === 'vigenere') {
             key = document.getElementById('vigenereKey').value;
@@ -920,9 +957,11 @@ $(document).ready(function () {
             tweetIt(msg, key);
         } else {
             // throw error display
+
         }
 
     });
+
 
 
     // On cancel click - clear all selected elements + textarea
