@@ -1,5 +1,12 @@
 /** Created by ianarsenault on 11/9/16. */
 
+
+/** TODO: Create url that will pass cipher selected and key input */
+/** This will allow user to tweet out their coded message, and allow others
+ *  to click the link to decrypt the message without having to search for the
+ *  cipher or key */
+
+
 /**
  * @param str
  * @returns {Array|{index: number, input: string}|*}
@@ -200,6 +207,7 @@ function typeOut() {
 
 }
 
+
 /**
  * Method to mimic cursor blink
  */
@@ -214,6 +222,7 @@ function cursorBlink() {
     }, 500);
 
 }
+
 
 /**
  * Method to scroll-to-point on page
@@ -235,18 +244,6 @@ function scroll() {
         });
 
     });
-}
-
-/**
- * Method to check if screen size has changed
- */
-function screenChange() {
-    if ($(window).width() < 769) {
-
-    }
-    else {
-
-    }
 }
 
 
@@ -449,7 +446,6 @@ function keyBlock() {
 
 }
 
-// TODO: Fix vigenere key display from "ABCDEF" to actual beginning of user entered string - up to 24 characters ...
 
 /**
  * Method to change the key display for  Substitution
@@ -633,7 +629,7 @@ function tweetIt(msg, key) {
     // If greater than 140 - take message.length and subtract until equals..
     // 140 - (url + key)
     // Either alert user to allow them to either proceed with shorter message or proceed with truncated message
-    $('#tweetBtn').attr('href', 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(msg + ' - Key-' + key + ' https://www.google.com/'));
+    $('#tweetBtn').attr('href', 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(msg + ' - Key-' + key));
 }
 
 
@@ -662,10 +658,6 @@ function recurseHeader() {
     var numOfKeys = Object.keys(obj).length;
     var index = 0;
 
-    //console.log("Title: " + obj.vig[0].title + " Description: " + obj.vig[0].description);
-    //console.log("Title: " + obj.sub[0].title + " Description: " + obj.sub[0].description);
-    //console.log(obj[objKeys[index]][0].title);
-
     setInterval(function() {
         //$('#intervalDiv').text(obj[objKeys[index]][0].title + " " + obj[objKeys[index]][0].description);
 
@@ -675,10 +667,14 @@ function recurseHeader() {
         });
         index = (index + 1) % numOfKeys;
     }, 16000); // Every 16 seconds fade out text and fade in new text
+
 }
+
 
 $(document).ready(function () {
 
+    // Disable tweet button
+    //$('#tweetBtn').attr('disabled', 'disabled');
 
     var arr = ["#f00", "#ff0", "#f0f", "#f66"];
 
@@ -698,7 +694,7 @@ $(document).ready(function () {
         setTimeout(function() {
             recurse(counter + 1);
         }, 200);
-// start it for the first number.
+        // start it for the first number.
     })(0);
 
     recurseHeader();
@@ -753,7 +749,11 @@ $(document).ready(function () {
 
     // in text area - on change validate whether anything has been entered by the user
     $('#enText').keyup(function () {
-        // alert("keyup");
+
+        //     var msg = document.getElementById('msgdisplay').value;
+        //     var evt = new CustomEvent('change');
+        //     console.log(document.getElementById('msgdisplay').dispatchEvent(evt));
+
         if ($(this) > '0') {
             $(this).removeClass('is-danger');
             // Text Warning
@@ -904,10 +904,26 @@ $(document).ready(function () {
     });
 
 
+    // TODO DETECT WHEN ENCRYPTED MESSAGE TEXT AREA HAS CHANGED.
+    /// STILL PASSING OLD VALUE TO TWEET IT BUTTON EVEN AFTER CLEARED
+
+    // $('#msgdisplay').keyup(function () {
+    //     var msg = document.getElementById('msgdisplay').value;
+    //     var evt = new CustomEvent('change');
+    //     console.log(document.getElementById('msgdisplay').dispatchEvent(evt));
+    // });
+
+
+
     $('#tweetBtn').on('click', function () {
         // alert("Button works!");
         var key = null;
         var msg = document.getElementById('msgdisplay').value;
+        var evt = new CustomEvent('change');
+        console.log(document.getElementById('msgdisplay').dispatchEvent(evt));
+
+
+        //alert(msg);
         // Add checks that other fields are not empty before allowing click
         if (document.getElementById('cipherSelect').value === 'vigenere') {
             key = document.getElementById('vigenereKey').value;
@@ -916,10 +932,8 @@ $(document).ready(function () {
         }
 
         // If cipher display is empty throw error message
-        if (document.getElementById('msgdisplay').value.length > 0) {
+        if (document.getElementById('msgdisplay').value.length > '0') {
             tweetIt(msg, key);
-        } else {
-            // throw error display
         }
 
     });
@@ -933,22 +947,6 @@ $(document).ready(function () {
         $('#msgdisplay').val(''); // clear the encrypted/decrypt message display field
         $('#vigenereKey').val('');
     });
-
-
-    console.log("    ______ _     _ _______ _     _ ______  _______ ______ _______");
-    console.log("    (_____ (_)   (_|_______|_)   (_|_____ \\(_______|_____ (_______)");
-    console.log("    _____) )     _ _       _     _ _____) )_____   _____) )     _");
-    console.log("    |  ____/ |   | | |     | |   | |  __  /|  ___) |  __  / |   | |");
-    console.log("    | |     \\ \\ / /| |_____| |___| | |  |\\ \\| |_____| |  \\ \\ |__| |");
-    console.log("    |_|      \\___/  \\______)\\_____/|_|   |_|_______)_|   |_\\______)");
-
-
-    /*
-     $.getJSON('http://my-api.com/json/', data => {
-     $.each(data, (key, value) => {
-     console.log(key + ' => ' + value); });
-     });
-     */
 
 
 });
