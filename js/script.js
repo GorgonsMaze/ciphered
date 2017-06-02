@@ -922,10 +922,6 @@ $(document).ready(function () {
     /// STILL PASSING OLD VALUE TO TWEET IT BUTTON EVEN AFTER CLEARED
 
 
-    $('#decryptMessage, #encryptMessage, #clearCancel').on('click', function () {
-        alert("clicked");
-    });
-
     // $('#msgdisplay').keyup(function () {
     //     var msg = document.getElementById('msgdisplay').value;
     //     var evt = new CustomEvent('change');
