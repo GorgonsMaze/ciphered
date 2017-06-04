@@ -207,7 +207,6 @@ function typeOut() {
 
 }
 
-
 /**
  * Method to mimic cursor blink
  */
@@ -222,7 +221,6 @@ function cursorBlink() {
     }, 500);
 
 }
-
 
 /**
  * Method to scroll-to-point on page
@@ -244,6 +242,18 @@ function scroll() {
         });
 
     });
+}
+
+/**
+ * Method to check if screen size has changed
+ */
+function screenChange() {
+    if ($(window).width() < 769) {
+
+    }
+    else {
+
+    }
 }
 
 
@@ -446,6 +456,7 @@ function keyBlock() {
 
 }
 
+// TODO: Fix vigenere key display from "ABCDEF" to actual beginning of user entered string - up to 24 characters ...
 
 /**
  * Method to change the key display for  Substitution
@@ -658,6 +669,10 @@ function recurseHeader() {
     var numOfKeys = Object.keys(obj).length;
     var index = 0;
 
+    //console.log("Title: " + obj.vig[0].title + " Description: " + obj.vig[0].description);
+    //console.log("Title: " + obj.sub[0].title + " Description: " + obj.sub[0].description);
+    //console.log(obj[objKeys[index]][0].title);
+
     setInterval(function() {
         //$('#intervalDiv').text(obj[objKeys[index]][0].title + " " + obj[objKeys[index]][0].description);
 
@@ -667,9 +682,7 @@ function recurseHeader() {
         });
         index = (index + 1) % numOfKeys;
     }, 16000); // Every 16 seconds fade out text and fade in new text
-
 }
-
 
 $(document).ready(function () {
 
@@ -694,7 +707,7 @@ $(document).ready(function () {
         setTimeout(function() {
             recurse(counter + 1);
         }, 200);
-        // start it for the first number.
+// start it for the first number.
     })(0);
 
     recurseHeader();
@@ -749,6 +762,7 @@ $(document).ready(function () {
 
     // in text area - on change validate whether anything has been entered by the user
     $('#enText').keyup(function () {
+        // alert("keyup");
 
         //     var msg = document.getElementById('msgdisplay').value;
         //     var evt = new CustomEvent('change');
@@ -907,12 +921,12 @@ $(document).ready(function () {
     // TODO DETECT WHEN ENCRYPTED MESSAGE TEXT AREA HAS CHANGED.
     /// STILL PASSING OLD VALUE TO TWEET IT BUTTON EVEN AFTER CLEARED
 
+
     // $('#msgdisplay').keyup(function () {
     //     var msg = document.getElementById('msgdisplay').value;
     //     var evt = new CustomEvent('change');
     //     console.log(document.getElementById('msgdisplay').dispatchEvent(evt));
     // });
-
 
 
     $('#tweetBtn').on('click', function () {
@@ -932,7 +946,7 @@ $(document).ready(function () {
         }
 
         // If cipher display is empty throw error message
-        if (document.getElementById('msgdisplay').value.length > '0') {
+        if (document.getElementById('msgdisplay').value.length > 0) {
             tweetIt(msg, key);
         }
 
