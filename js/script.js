@@ -929,9 +929,6 @@ $(document).ready(function () {
     // });
 
 
-    $('#msgdisplay').change(function () {
-       alert("ejlsjdflkdsjflksjflksjflk");
-    });
     $('#tweetBtn').on('click', function () {
         // alert("Button works!");
         var key = null;
@@ -951,13 +948,9 @@ $(document).ready(function () {
         // If cipher display is empty throw error message
         if (document.getElementById('msgdisplay').value.length > 0) {
             tweetIt(msg, key);
-        } else {
-            // throw error display
-
         }
 
     });
-
 
 
     // On cancel click - clear all selected elements + textarea
@@ -968,22 +961,6 @@ $(document).ready(function () {
         $('#msgdisplay').val(''); // clear the encrypted/decrypt message display field
         $('#vigenereKey').val('');
     });
-
-
-    console.log("    ______ _     _ _______ _     _ ______  _______ ______ _______");
-    console.log("    (_____ (_)   (_|_______|_)   (_|_____ \\(_______|_____ (_______)");
-    console.log("    _____) )     _ _       _     _ _____) )_____   _____) )     _");
-    console.log("    |  ____/ |   | | |     | |   | |  __  /|  ___) |  __  / |   | |");
-    console.log("    | |     \\ \\ / /| |_____| |___| | |  |\\ \\| |_____| |  \\ \\ |__| |");
-    console.log("    |_|      \\___/  \\______)\\_____/|_|   |_|_______)_|   |_\\______)");
-
-
-    /*
-     $.getJSON('http://my-api.com/json/', data => {
-     $.each(data, (key, value) => {
-     console.log(key + ' => ' + value); });
-     });
-     */
 
 
 });
