@@ -380,4 +380,12 @@ table tbody tr:first-child {
 
 }
 
+
+.button:focus, .button.is-focused {
+    border-color: #2630d1;
+    box-shadow: 0 0 0.5em rgba(12, 18, 209, 0.25);
+    color: #363636;
+}
+
+
 /* TODO: Fix device size queries for key change display */
