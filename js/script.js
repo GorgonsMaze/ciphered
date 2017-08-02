@@ -630,21 +630,6 @@ function makeTable() {
 
 
 /**
- * Method to tweet out encrypted message with key + link
- */
-function tweetIt(msg, key) {
-    // add link
-    // Do validation to make sure it's all under 160 characters.
-
-    // Check total character length of message - key - url
-    // If greater than 140 - take message.length and subtract until equals..
-    // 140 - (url + key)
-    // Either alert user to allow them to either proceed with shorter message or proceed with truncated message
-    $('#tweetBtn').attr('href', 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(msg + ' - Key-' + key));
-}
-
-
-/**
  *  Method to display new header ever n seconds
  */
 function recurseHeader() {
@@ -669,10 +654,6 @@ function recurseHeader() {
     var numOfKeys = Object.keys(obj).length;
     var index = 0;
 
-    //console.log("Title: " + obj.vig[0].title + " Description: " + obj.vig[0].description);
-    //console.log("Title: " + obj.sub[0].title + " Description: " + obj.sub[0].description);
-    //console.log(obj[objKeys[index]][0].title);
-
     setInterval(function() {
         //$('#intervalDiv').text(obj[objKeys[index]][0].title + " " + obj[objKeys[index]][0].description);
 
@@ -686,12 +667,9 @@ function recurseHeader() {
 
 $(document).ready(function () {
 
-    // Disable tweet button
-    //$('#tweetBtn').attr('disabled', 'disabled');
-
     var arr = ["#f00", "#ff0", "#f0f", "#f66"];
 
-// run through the array forever
+
     (function recurse(counter) {
         // get the colour
         var color = arr[counter];
@@ -762,12 +740,6 @@ $(document).ready(function () {
 
     // in text area - on change validate whether anything has been entered by the user
     $('#enText').keyup(function () {
-        // alert("keyup");
-
-        //     var msg = document.getElementById('msgdisplay').value;
-        //     var evt = new CustomEvent('change');
-        //     console.log(document.getElementById('msgdisplay').dispatchEvent(evt));
-
         if ($(this) > '0') {
             $(this).removeClass('is-danger');
             // Text Warning
@@ -914,41 +886,6 @@ $(document).ready(function () {
         // TODO: If user enters text before selecting a cipher, keep text in textarea rather than clear
         // TODO: Use counter to stop clearing of substitution rotation and cipher drop downs if user has not run program
 
-
-    });
-
-
-    // TODO DETECT WHEN ENCRYPTED MESSAGE TEXT AREA HAS CHANGED.
-    /// STILL PASSING OLD VALUE TO TWEET IT BUTTON EVEN AFTER CLEARED
-
-
-    // $('#msgdisplay').keyup(function () {
-    //     var msg = document.getElementById('msgdisplay').value;
-    //     var evt = new CustomEvent('change');
-    //     console.log(document.getElementById('msgdisplay').dispatchEvent(evt));
-    // });
-
-
-    $('#tweetBtn').on('click', function () {
-        // alert("Button works!");
-        var key = null;
-        var msg = document.getElementById('msgdisplay').value;
-        var evt = new CustomEvent('change');
-        console.log(document.getElementById('msgdisplay').dispatchEvent(evt));
-
-
-        //alert(msg);
-        // Add checks that other fields are not empty before allowing click
-        if (document.getElementById('cipherSelect').value === 'vigenere') {
-            key = document.getElementById('vigenereKey').value;
-        } else {
-            key = document.getElementById('subSelect').value;
-        }
-
-        // If cipher display is empty throw error message
-        if (document.getElementById('msgdisplay').value.length > 0) {
-            tweetIt(msg, key);
-        }
 
     });
 
